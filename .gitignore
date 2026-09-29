@@ -1,0 +1,34 @@
+# Private and work directory (NEVER COMMIT TO GITHUB)
+Codex_Work/
+Codex_Work/*
+
+# Environments
+.venv/
+env/
+venv/
+ENV/
+
+# Byte-compiled / optimized files
+__pycache__/
+*.py[cod]
+*$py.class
+
+# PyInstaller / Build
+build/
+dist/
+*.spec
+
+# Persistent user data & credentials
+data/*.db*
+data/*.log
+data/settings.json
+*.log
+
+# IDE & OS
+.vscode/
+.idea/
+*.sublime-project
+*.sublime-workspace
+.DS_Store
+Thumbs.db
+desktop.ini

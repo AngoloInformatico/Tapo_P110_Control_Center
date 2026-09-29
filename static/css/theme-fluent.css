@@ -1,0 +1,544 @@
+/* ==========================================================================
+   THEME 2: WINDOWS 11 FLUENT MICA (100% Fedele allo Screenshot 2)
+   ========================================================================== */
+
+#view-fluent {
+  background-color: #121826;
+  background-image: 
+    radial-gradient(circle at 10% 40%, rgba(37, 99, 235, 0.14) 0%, transparent 45%),
+    radial-gradient(circle at 90% 80%, rgba(139, 92, 246, 0.10) 0%, transparent 45%);
+  color: #f8fafc;
+  display: flex !important;
+  flex-direction: row;
+  height: 100vh;
+  max-height: 100vh;
+  overflow: hidden;
+}
+
+/* Left Frosted Mica Sidebar */
+.fluent-sidebar {
+  width: 270px;
+  background: rgba(18, 26, 42, 0.85);
+  border-right: 1px solid rgba(255, 255, 255, 0.08);
+  backdrop-filter: blur(25px);
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  padding: 16px 18px;
+  flex-shrink: 0;
+}
+
+.fluent-sidebar-top {
+  display: flex;
+  align-items: flex-start;
+  gap: 10px;
+}
+
+.fluent-tapo-icon {
+  width: 28px;
+  height: 28px;
+  border-radius: 7px;
+  overflow: hidden;
+  box-shadow: 0 0 10px rgba(0, 180, 216, 0.5);
+  flex-shrink: 0;
+  margin-top: 2px;
+}
+
+.fluent-brand-text {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.fluent-brand-name {
+  font-size: 0.97rem;
+  font-weight: 700;
+  color: #ffffff;
+  letter-spacing: -0.2px;
+  line-height: 1.2;
+}
+
+.fluent-sidebar-ip {
+  font-size: 0.68rem;
+  font-weight: 600;
+  color: #38bdf8;
+  opacity: 0.9;
+}
+
+/* Center Big Blue Concentric Power Dial */
+.fluent-power-dial-stage {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  margin: auto 0;
+}
+
+.fluent-power-button-outer {
+  width: 145px;
+  height: 145px;
+  border-radius: 50%;
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: radial-gradient(circle at 35% 35%, #18263e, #0d1524);
+  box-shadow: 0 14px 30px rgba(0, 0, 0, 0.6), inset 0 2px 4px rgba(255, 255, 255, 0.12);
+  margin-bottom: 16px;
+}
+
+.fluent-ring-glow {
+  position: absolute;
+  inset: -6px;
+  border-radius: 50%;
+  border: 4px solid rgba(255, 255, 255, 0.08);
+  transition: all 0.3s ease;
+}
+
+.fluent-power-button-outer.on .fluent-ring-glow {
+  border-color: #3b82f6;
+  box-shadow: 0 0 28px rgba(59, 130, 246, 0.7), inset 0 0 14px rgba(59, 130, 246, 0.35);
+}
+
+/* Bright LED dot at 12 o'clock */
+.fluent-power-button-outer.on::before {
+  content: '';
+  position: absolute;
+  top: -2px;
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  background: #ffffff;
+  box-shadow: 0 0 8px #ffffff, 0 0 14px #3b82f6;
+  z-index: 10;
+}
+
+.fluent-power-btn {
+  width: 125px;
+  height: 125px;
+  border-radius: 50%;
+  background: radial-gradient(circle at 35% 35%, #1e2f4d, #0f192b);
+  border: 4px solid #1a273e;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  outline: none;
+  transition: all 0.25s ease;
+}
+
+.fluent-power-btn svg {
+  width: 44px;
+  height: 44px;
+  stroke: #475569;
+  stroke-width: 2.2;
+  fill: none;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+  transition: all 0.25s ease;
+}
+
+.fluent-power-button-outer.on .fluent-power-btn {
+  background: radial-gradient(circle at 35% 35%, #1d4ed8, #0e2a6b);
+  border-color: #60a5fa;
+  box-shadow: 0 0 25px rgba(59, 130, 246, 0.5), inset 0 2px 4px rgba(255, 255, 255, 0.35);
+}
+
+.fluent-power-button-outer.on .fluent-power-btn svg {
+  stroke: #ffffff;
+  filter: drop-shadow(0 0 8px #93c5fd);
+}
+
+.fluent-device-type {
+  font-size: 0.8rem;
+  font-weight: 600;
+  color: #94a3b8;
+  margin-bottom: 4px;
+}
+
+.fluent-power-status-title {
+  font-size: 1.55rem;
+  font-weight: 800;
+  color: #38bdf8;
+  letter-spacing: 0.5px;
+  margin-bottom: 12px;
+}
+
+.fluent-power-status-title.off {
+  color: #64748b;
+}
+
+/* Windows 11 Fluent Toggle Switch */
+.fluent-toggle-wrapper {
+  margin-top: 4px;
+}
+
+.fluent-switch-pill {
+  width: 68px;
+  height: 30px;
+  background: rgba(30, 41, 59, 0.9);
+  border: 1.5px solid rgba(255, 255, 255, 0.15);
+  border-radius: 16px;
+  display: flex;
+  align-items: center;
+  padding: 3px;
+  cursor: pointer;
+  position: relative;
+  transition: all 0.25s ease;
+}
+
+.fluent-switch-thumb {
+  width: 22px;
+  height: 22px;
+  border-radius: 50%;
+  background: #cbd5e1;
+  transition: transform 0.25s cubic-bezier(0.16, 1, 0.3, 1), background-color 0.25s;
+}
+
+.fluent-switch-text {
+  position: absolute;
+  right: 10px;
+  font-size: 0.72rem;
+  font-weight: 800;
+  color: #94a3b8;
+}
+
+.fluent-switch-pill.on {
+  background: #2563eb;
+  border-color: #60a5fa;
+}
+
+.fluent-switch-pill.on .fluent-switch-thumb {
+  transform: translateX(38px);
+  background: #ffffff;
+}
+
+.fluent-switch-pill.on .fluent-switch-text {
+  left: 10px;
+  right: auto;
+  color: #ffffff;
+}
+
+.fluent-sidebar-footer {
+  display: flex;
+  justify-content: center;
+}
+
+.fluent-version-badge {
+  font-size: 0.68rem;
+  color: #64748b;
+  background: rgba(255, 255, 255, 0.05);
+  padding: 2px 8px;
+  border-radius: 6px;
+}
+
+/* Right Main Area */
+.fluent-main-panel {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  padding: 10px 18px 12px;
+  gap: 10px;
+  overflow: hidden;
+}
+
+/* Top Device Info Bar */
+.fluent-top-bar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  height: 44px;
+  flex-shrink: 0;
+}
+
+.fluent-device-info {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.fluent-plug-icon-box {
+  width: 36px;
+  height: 36px;
+  background: #ffffff;
+  border-radius: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+}
+
+.fluent-device-header-title {
+  font-size: 1.05rem;
+  font-weight: 700;
+  color: #ffffff;
+}
+
+.fluent-conn-status {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 0.74rem;
+  color: #94a3b8;
+}
+
+.fluent-green-dot {
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  background: #22c55e;
+  box-shadow: 0 0 8px #22c55e;
+}
+
+.fluent-ip-badge {
+  color: #38bdf8;
+  font-weight: 600;
+}
+
+.fluent-top-actions {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.fluent-theme-select-box select {
+  background: rgba(30, 41, 59, 0.8);
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  color: #f1f5f9;
+  border-radius: 8px;
+  padding: 4px 8px;
+  font-size: 0.75rem;
+}
+
+.fluent-icon-btn {
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  color: #cbd5e1;
+  width: 32px;
+  height: 32px;
+  border-radius: 8px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+.fluent-icon-btn:hover {
+  background: rgba(59, 130, 246, 0.2);
+  color: #60a5fa;
+  border-color: #60a5fa;
+}
+
+.fluent-user-avatar {
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+}
+
+/* Row 1: 4 Cards Side-By-Side */
+.fluent-cards-row {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 10px;
+  height: 85px;
+  flex-shrink: 0;
+}
+
+.fluent-card {
+  background: rgba(24, 34, 54, 0.65);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 12px;
+  backdrop-filter: blur(16px);
+  padding: 8px 12px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  box-shadow: 0 4px 14px rgba(0, 0, 0, 0.3);
+}
+
+.fluent-card-power {
+  border-color: rgba(139, 92, 246, 0.35);
+  background: linear-gradient(135deg, rgba(26, 36, 60, 0.75) 0%, rgba(46, 26, 74, 0.5) 100%);
+}
+
+.fluent-card-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.fluent-card-title {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  font-size: 0.72rem;
+  font-weight: 600;
+  color: #94a3b8;
+}
+
+.fluent-sparkle-badge, .fluent-info-badge {
+  font-size: 0.75rem;
+}
+
+.fluent-card-value-box {
+  display: flex;
+  align-items: baseline;
+  gap: 4px;
+}
+
+.fluent-card-number {
+  font-size: 1.45rem;
+  font-weight: 800;
+  color: #ffffff;
+  letter-spacing: -0.5px;
+  font-variant-numeric: tabular-nums;
+}
+
+.fluent-card-unit {
+  font-size: 0.95rem;
+  font-weight: 700;
+  color: #94a3b8;
+}
+
+.fluent-card-subtext {
+  font-size: 0.68rem;
+  color: #a855f7;
+  font-weight: 600;
+}
+
+.fluent-sparkline-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-top: -2px;
+}
+
+.fluent-sparkline-label {
+  font-size: 0.65rem;
+  color: #94a3b8;
+}
+
+.fluent-sparkline-container {
+  width: 90px;
+  height: 20px;
+}
+
+/* Row 2 & 3: Stacked Charts */
+.fluent-chart-box {
+  background: rgba(22, 31, 50, 0.65);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 12px;
+  backdrop-filter: blur(16px);
+  padding: 8px 14px 6px;
+  display: flex;
+  flex-direction: column;
+  flex: 1 1 0;
+  min-height: 0;
+  overflow: hidden;
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.3);
+}
+
+.fluent-chart-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 4px;
+}
+
+.fluent-chart-title {
+  font-size: 0.82rem;
+  font-weight: 700;
+  color: #ffffff;
+}
+
+.fluent-live-tag {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  font-size: 0.72rem;
+  font-weight: 700;
+  color: #38bdf8;
+}
+
+.fluent-blue-dot {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: #38bdf8;
+  box-shadow: 0 0 6px #38bdf8;
+}
+
+.fluent-canvas-wrapper {
+  flex: 1 1 0;
+  min-height: 0;
+  width: 100%;
+  position: relative;
+  overflow: hidden;
+}
+
+.fluent-canvas-wrapper canvas {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100% !important;
+  height: 100% !important;
+}
+
+/* Monthly Section */
+.fluent-monthly-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 4px;
+}
+
+.fluent-monthly-meta {
+  font-size: 0.7rem;
+  color: #94a3b8;
+}
+
+.fluent-month-nav {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.fluent-nav-btn {
+  background: rgba(255, 255, 255, 0.06);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  color: #cbd5e1;
+  padding: 3px 8px;
+  border-radius: 6px;
+  font-size: 0.72rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+.fluent-nav-btn:hover {
+  background: rgba(59, 130, 246, 0.2);
+  color: #60a5fa;
+}
+
+.fluent-month-current {
+  font-size: 0.76rem;
+  font-weight: 700;
+  color: #ffffff;
+}
+
+.fluent-canvas-wrapper-monthly {
+  flex: 1 1 0;
+  min-height: 0;
+  width: 100%;
+  position: relative;
+  overflow: hidden;
+}
+
+.fluent-canvas-wrapper-monthly canvas {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100% !important;
+  height: 100% !important;
+}

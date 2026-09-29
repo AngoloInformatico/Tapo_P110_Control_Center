@@ -1,0 +1,487 @@
+/* ==========================================================================
+   THEME 3: PRO COCKPIT / INDUSTRIAL HIGH-TECH (100% Fedele allo Screenshot 3)
+   ========================================================================== */
+
+#view-cockpit {
+  background-color: #0b0e14;
+  background-image: 
+    radial-gradient(circle at 50% 15%, rgba(245, 158, 11, 0.12) 0%, transparent 40%),
+    linear-gradient(rgba(255, 255, 255, 0.02) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255, 255, 255, 0.02) 1px, transparent 1px);
+  background-size: 100% 100%, 20px 20px, 20px 20px;
+  color: #f3f4f6;
+  font-family: 'Consolas', 'Segoe UI', monospace;
+  display: flex;
+  flex-direction: column;
+  padding: 8px 16px;
+  gap: 8px;
+}
+
+/* Header */
+.cockpit-top-bar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  height: 38px;
+  padding: 2px 4px;
+  flex-shrink: 0;
+  border-bottom: 1px solid rgba(245, 158, 11, 0.2);
+}
+
+.cockpit-header-left {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.cockpit-telemetry-badge {
+  background: #f59e0b;
+  color: #000000;
+  font-size: 0.65rem;
+  font-weight: 900;
+  padding: 2px 6px;
+  border-radius: 4px;
+  letter-spacing: 1px;
+}
+
+.cockpit-brand-title {
+  font-size: 0.95rem;
+  font-weight: 800;
+  color: #ffffff;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+}
+
+.cockpit-ip-display {
+  font-size: 0.72rem;
+  color: #10b981;
+  font-weight: 700;
+}
+
+.cockpit-header-right {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.cockpit-select-box {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.cockpit-label {
+  font-size: 0.68rem;
+  color: #f59e0b;
+  font-weight: 800;
+}
+
+.cockpit-select-box select {
+  background: #111827;
+  border: 1px solid rgba(245, 158, 11, 0.4);
+  color: #fef3c7;
+  font-family: monospace;
+  font-size: 0.74rem;
+  padding: 3px 6px;
+  border-radius: 6px;
+}
+
+.cockpit-tool-btn {
+  background: rgba(245, 158, 11, 0.1);
+  border: 1px solid rgba(245, 158, 11, 0.35);
+  color: #fbbf24;
+  width: 30px;
+  height: 30px;
+  border-radius: 6px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+.cockpit-tool-btn:hover {
+  background: #f59e0b;
+  color: #000000;
+  box-shadow: 0 0 10px #f59e0b;
+}
+
+/* Top Row: 4 Radial Semi-Gauges + Center Turbine Dial */
+.cockpit-gauges-row {
+  display: grid;
+  grid-template-columns: 1fr 1fr 210px 1fr 1fr;
+  gap: 12px;
+  height: 160px;
+  align-items: center;
+  flex-shrink: 0;
+}
+
+.cockpit-gauge-card {
+  background: #171a23;
+  border: 1px solid rgba(255, 255, 255, 0.06);
+  border-radius: 16px;
+  padding: 10px 10px 6px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
+  height: 100%;
+  box-shadow: 0 10px 24px rgba(0, 0, 0, 0.55), inset 0 1px 2px rgba(255, 255, 255, 0.05);
+}
+
+.cockpit-gauge-title {
+  font-size: 0.76rem;
+  color: #d1d5db;
+  font-weight: 600;
+  letter-spacing: 0.3px;
+  text-align: center;
+}
+
+.cockpit-gauge-val-box {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  margin-top: 1px;
+  margin-bottom: 2px;
+}
+
+.cockpit-gauge-num {
+  font-size: 1.45rem;
+  font-weight: 800;
+  color: #ffffff;
+  line-height: 1.1;
+  letter-spacing: -0.5px;
+  font-variant-numeric: tabular-nums;
+  text-shadow: 0 2px 8px rgba(0, 0, 0, 0.8);
+}
+
+.cockpit-gauge-unit {
+  font-size: 0.82rem;
+  font-weight: 600;
+  color: #94a3b8;
+  margin-top: 1px;
+  line-height: 1;
+  display: flex;
+  align-items: baseline;
+  gap: 4px;
+}
+
+.cockpit-amp-tag {
+  font-size: 0.70rem;
+  font-weight: 600;
+  color: #f59e0b;
+  background: rgba(245, 158, 11, 0.15);
+  padding: 1px 5px;
+  border-radius: 4px;
+  border: 1px solid rgba(245, 158, 11, 0.3);
+  margin-left: 2px;
+}
+
+.cockpit-semi-gauge {
+  width: 130px;
+  height: 52px;
+  position: relative;
+  display: flex;
+  align-items: flex-end;
+  justify-content: center;
+  margin-bottom: 2px;
+}
+
+.gauge-svg {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  filter: drop-shadow(0 2px 6px rgba(0, 0, 0, 0.6));
+}
+
+/* Center Industrial Rotary Dial with Sunburst Rays */
+.cockpit-turbine-center {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  height: 100%;
+}
+
+/* Glowing Backlight Sunburst Rays (Golden sunburst flare) */
+.cockpit-sunburst-flare {
+  position: absolute;
+  width: 210px;
+  height: 210px;
+  border-radius: 50%;
+  background: 
+    radial-gradient(circle, rgba(245, 158, 11, 0.5) 0%, rgba(217, 119, 6, 0.25) 45%, transparent 72%),
+    repeating-conic-gradient(from 0deg, rgba(251, 191, 36, 0.35) 0deg 6deg, transparent 6deg 18deg);
+  pointer-events: none;
+  transition: all 0.3s ease;
+  filter: blur(4px);
+  opacity: 0.9;
+}
+
+.cockpit-turbine-dial.off ~ .cockpit-sunburst-flare,
+.cockpit-turbine-dial:not(.on) ~ .cockpit-sunburst-flare,
+.cockpit-turbine-center:not(:has(.cockpit-turbine-dial.on)) .cockpit-sunburst-flare {
+  opacity: 0.25;
+  filter: blur(6px);
+}
+
+.cockpit-turbine-dial {
+  width: 146px;
+  height: 146px;
+  border-radius: 50%;
+  background: #11141c;
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 12px 30px rgba(0, 0, 0, 0.9), inset 0 2px 4px rgba(255, 255, 255, 0.15);
+  z-index: 2;
+}
+
+/* Notched Amber Ticks Around the Perimeter */
+.cockpit-ticks-svg {
+  position: absolute;
+  inset: -6px;
+  width: calc(100% + 12px);
+  height: calc(100% + 12px);
+  pointer-events: none;
+  transition: all 0.3s ease;
+}
+
+.cockpit-turbine-dial.on .cockpit-ticks-circle {
+  stroke: #fbbf24;
+  filter: drop-shadow(0 0 6px #f59e0b);
+  animation: cockpitTickRotate 45s linear infinite;
+  transform-origin: center;
+}
+
+@keyframes cockpitTickRotate {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+.cockpit-dial-btn {
+  width: 104px;
+  height: 104px;
+  border-radius: 50%;
+  background: radial-gradient(circle at 40% 40%, #1e2330, #0a0d14);
+  border: 2.5px solid #d97706;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  outline: none;
+  transition: all 0.25s ease;
+  box-shadow: inset 0 3px 10px rgba(0, 0, 0, 0.9), 0 0 16px rgba(245, 158, 11, 0.35);
+}
+
+.cockpit-dial-btn:hover {
+  transform: scale(1.02);
+  box-shadow: inset 0 3px 10px rgba(0, 0, 0, 0.9), 0 0 24px rgba(245, 158, 11, 0.6);
+}
+
+.cockpit-power-svg {
+  width: 28px;
+  height: 28px;
+  stroke: #fbbf24;
+  stroke-width: 2.4;
+  fill: none;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+  transition: all 0.25s ease;
+  filter: drop-shadow(0 0 6px rgba(245, 158, 11, 0.8));
+}
+
+.cockpit-dial-label {
+  font-size: 0.65rem;
+  font-weight: 800;
+  letter-spacing: 1px;
+  color: #fef3c7;
+  text-align: center;
+  line-height: 1.15;
+  margin-top: 3px;
+  text-shadow: 0 1px 4px rgba(0, 0, 0, 0.8);
+}
+
+.cockpit-turbine-dial.on .cockpit-dial-btn {
+  background: radial-gradient(circle at 40% 40%, #2f1b0a, #130a03);
+  border-color: #f59e0b;
+  box-shadow: 0 0 28px rgba(245, 158, 11, 0.6), inset 0 0 14px rgba(245, 158, 11, 0.4);
+}
+
+.cockpit-turbine-dial.on .cockpit-power-svg {
+  stroke: #fef08a;
+  filter: drop-shadow(0 0 10px #f59e0b);
+}
+
+.cockpit-turbine-dial.on .cockpit-dial-label {
+  color: #fffbeb;
+  text-shadow: 0 0 8px #f59e0b;
+}
+
+.cockpit-turbine-dial:not(.on) .cockpit-dial-btn {
+  border-color: #78350f;
+  background: radial-gradient(circle at 40% 40%, #151821, #090b10);
+  box-shadow: inset 0 3px 10px rgba(0, 0, 0, 0.9);
+}
+
+.cockpit-turbine-dial:not(.on) .cockpit-power-svg {
+  stroke: #b45309;
+  filter: none;
+}
+
+.cockpit-turbine-dial:not(.on) .cockpit-dial-label {
+  color: #92400e;
+  text-shadow: none;
+}
+
+/* Middle: Dynamic Waveform Oscilloscope Screen */
+.cockpit-waveform-card {
+  background: #111620;
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 12px;
+  padding: 8px 12px;
+  display: flex;
+  flex-direction: column;
+  flex: 1.1;
+  min-height: 140px;
+  box-shadow: inset 0 2px 10px rgba(0, 0, 0, 0.6);
+}
+
+.cockpit-card-title {
+  font-size: 0.74rem;
+  font-weight: 800;
+  color: #e5e7eb;
+  letter-spacing: 0.5px;
+  margin-bottom: 4px;
+}
+
+.cockpit-oscilloscope-screen {
+  flex: 1;
+  width: 100%;
+  position: relative;
+  background: #080d12;
+  border: 1px solid #1f2937;
+  border-radius: 8px;
+  overflow: hidden;
+}
+
+.cockpit-oscilloscope-screen canvas {
+  width: 100% !important;
+  height: 100% !important;
+}
+
+/* Bottom: Monthly Energy Analytics Telemetry Bars + Month Selector */
+.cockpit-analytics-card {
+  background: #111620;
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 12px;
+  padding: 8px 12px;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  height: 145px;
+  flex-shrink: 0;
+  box-shadow: inset 0 2px 10px rgba(0, 0, 0, 0.6);
+}
+
+.cockpit-bars-stack {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+}
+
+.cockpit-bar-row {
+  display: grid;
+  grid-template-columns: 140px 1fr 70px;
+  align-items: center;
+  gap: 10px;
+}
+
+.cockpit-bar-label {
+  font-size: 0.68rem;
+  color: #9ca3af;
+  white-space: nowrap;
+}
+
+.cockpit-bar-track {
+  width: 100%;
+  height: 8px;
+  background: #1f2937;
+  border-radius: 4px;
+  overflow: hidden;
+}
+
+.cockpit-bar-fill {
+  height: 100%;
+  background: linear-gradient(90deg, #10b981 0%, #f59e0b 100%);
+  border-radius: 4px;
+  transition: width 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.cockpit-bar-val {
+  font-size: 0.68rem;
+  font-weight: 700;
+  color: #10b981;
+  text-align: right;
+  font-variant-numeric: tabular-nums;
+  white-space: nowrap;
+}
+
+.cockpit-months-bar {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  margin-top: auto;
+}
+
+.cockpit-arrow-btn {
+  background: #1f2937;
+  border: 1px solid #374151;
+  color: #f3f4f6;
+  width: 24px;
+  height: 24px;
+  border-radius: 4px;
+  cursor: pointer;
+  font-weight: 800;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+.cockpit-arrow-btn:hover {
+  background: #f59e0b;
+  color: #000000;
+}
+
+.cockpit-month-buttons-list {
+  display: flex;
+  gap: 4px;
+  flex: 1;
+  overflow-x: auto;
+}
+
+.cockpit-month-btn {
+  background: #161f2e;
+  border: 1px solid #283548;
+  color: #9ca3af;
+  font-size: 0.64rem;
+  padding: 3px 6px;
+  border-radius: 4px;
+  cursor: pointer;
+  white-space: nowrap;
+  flex: 1;
+  text-align: center;
+  transition: all 0.15s;
+}
+
+.cockpit-month-btn:hover, .cockpit-month-btn.active {
+  background: rgba(245, 158, 11, 0.2);
+  border-color: #f59e0b;
+  color: #fbbf24;
+}

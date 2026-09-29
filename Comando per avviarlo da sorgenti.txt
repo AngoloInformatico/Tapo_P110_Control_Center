@@ -1,0 +1,44 @@
+======================================================================
+     TAPO P110 CONTROL CENTER - COMANDI DI AVVIO DA SORGENTI
+======================================================================
+
+1) AVVIO AUTOMATICO COMPLETO (Consigliato per Windows 11):
+   Fai doppio clic sul file:
+   Avvia_App.bat
+
+   Questo aprirà direttamente la finestra desktop dedicata con interfaccia Cyber Neon.
+
+----------------------------------------------------------------------
+
+2) AVVIO MANUALE DA TERMINALE POWERSHELL / CMD:
+
+   Passo 1: Entra nella cartella di progetto:
+   cd "percorso\alla\cartella\Tapo P110"
+
+   Passo 2: Avvia l'applicazione con finestra desktop:
+   .\.venv\Scripts\python.exe main.py
+
+   Oppure avvia in modalità solo Web Server (accedibile da browser / tablet):
+   .\.venv\Scripts\python.exe main.py --server
+
+   Indirizzo Web locale:
+   http://127.0.0.1:8000
+
+----------------------------------------------------------------------
+
+3) CONFIGURAZIONE DELLA PRESA TAPO P110:
+   - All'interno della WebApp, fai clic sull'icona delle Impostazioni (ingranaggio in alto a destra).
+   - Inserisci:
+     * Indirizzo IP locale della presa (visibile nell'app Tapo sotto "Info Dispositivo")
+     * Email del tuo account TP-Link Tapo
+     * Password del tuo account TP-Link Tapo
+   - Premi "Salva e Connetti".
+   - Per testare la grafica e le animazioni senza collegare la presa fisica, puoi spuntare "Modalità Simulazione / Demo".
+
+----------------------------------------------------------------------
+
+4) COMPORTAMENTO REGISTRI E DISPLAY:
+   - Se la presa è spenta: azzeramento ISTANTANEO di Watt, mA e Voltaggio (evita valori obsoleti).
+   - Quando la presa è accesa: campionamento automatico ogni 4 secondi leggendo Potenza Attiva (W), Tensione (V), Corrente (mA) e Totale Cumulato (kWh).
+   - Grafico Live: curva fluida luminescente in tempo reale.
+   - Grafico Mensile: visualizzazione dettagliata con frecce Avanti/Indietro per scorrere i vari mesi (Gennaio, Febbraio, Marzo, ecc.).

@@ -1,0 +1,557 @@
+/* ==========================================================================
+   THEME 1: CYBER NEON GLASSMORPHISM (100% Fedele allo Screenshot 1)
+   ========================================================================== */
+
+#view-cyber {
+  background-color: #070b16;
+  background-image: 
+    radial-gradient(circle at 50% 18%, rgba(0, 242, 254, 0.12) 0%, transparent 40%),
+    radial-gradient(circle at 10% 85%, rgba(0, 230, 118, 0.08) 0%, transparent 35%),
+    radial-gradient(circle at 90% 85%, rgba(14, 165, 233, 0.08) 0%, transparent 35%);
+  color: #f1f5f9;
+  display: flex;
+  flex-direction: column;
+  padding: 10px 16px;
+  gap: 10px;
+}
+
+/* Header */
+.cyber-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 4px 6px;
+  height: 42px;
+  flex-shrink: 0;
+}
+
+.cyber-brand {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.cyber-logo-badge {
+  width: 32px;
+  height: 32px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 9px;
+  box-shadow: 0 0 14px rgba(0, 210, 211, 0.6);
+}
+
+.tapo-logo-svg {
+  width: 32px;
+  height: 32px;
+}
+
+.cyber-brand-title {
+  font-size: 1.15rem;
+  font-weight: 700;
+  color: #ffffff;
+  letter-spacing: -0.2px;
+  margin: 0;
+  line-height: 1.2;
+}
+
+.cyber-brand-text {
+  display: flex;
+  flex-direction: column;
+  gap: 1px;
+}
+
+.cyber-header-ip {
+  font-size: 0.68rem;
+  font-weight: 600;
+  color: #00d2d3;
+  letter-spacing: 0.3px;
+  opacity: 0.85;
+}
+
+
+.cyber-header-right {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.theme-pill-select {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 0.76rem;
+  font-weight: 600;
+  color: #94a3b8;
+  background: rgba(15, 23, 42, 0.6);
+  padding: 2px 8px;
+  border-radius: 12px;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.header-icon-btn {
+  background: rgba(15, 23, 42, 0.7);
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  color: #cbd5e1;
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  position: relative;
+  transition: all 0.2s;
+}
+
+.header-icon-btn:hover {
+  border-color: #00d2d3;
+  color: #00d2d3;
+  box-shadow: 0 0 10px rgba(0, 210, 211, 0.3);
+}
+
+.cyber-bell-dot {
+  position: absolute;
+  top: 7px;
+  right: 7px;
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: #00e676;
+  box-shadow: 0 0 8px #00e676;
+}
+
+.cyber-avatar-circle {
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  overflow: hidden;
+  border: 2px solid rgba(255, 255, 255, 0.2);
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* Main Body Layout */
+.cyber-main-body {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  flex: 1;
+  min-height: 0;
+}
+
+/* Top Hero: 2 Cards Left, Center Knob, 2 Cards Right */
+.cyber-hero-row {
+  display: grid;
+  grid-template-columns: 1fr 200px 1fr;
+  gap: 14px;
+  align-items: center;
+  height: 155px;
+  flex-shrink: 0;
+  margin-bottom: 6px;
+}
+
+.cyber-metric-stack {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  height: 100%;
+  justify-content: space-between;
+}
+
+.cyber-card {
+  background: rgba(15, 23, 42, 0.65);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 14px;
+  backdrop-filter: blur(16px);
+  padding: 10px 16px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.45);
+  flex: 1;
+  position: relative;
+  overflow: hidden;
+}
+
+.cyber-card-label {
+  font-size: 0.7rem;
+  font-weight: 700;
+  letter-spacing: 0.8px;
+  color: #94a3b8;
+  text-transform: uppercase;
+}
+
+.cyber-card-val-row {
+  display: flex;
+  align-items: baseline;
+  gap: 4px;
+  margin-top: 2px;
+}
+
+.cyber-card-number {
+  font-size: 1.7rem;
+  font-weight: 800;
+  color: #ffffff;
+  font-variant-numeric: tabular-nums;
+  letter-spacing: -0.5px;
+}
+
+.cyber-card-unit {
+  font-size: 1.05rem;
+  font-weight: 700;
+  color: #cbd5e1;
+}
+
+.cyber-card-subtext {
+  font-size: 0.72rem;
+  color: #00d2d3;
+  font-weight: 600;
+  margin-top: -2px;
+}
+
+/* Dual-value layout for CORRENTE card (mA sinistra, A destra) */
+.cyber-card-dual-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 6px;
+  margin-top: 2px;
+  width: 100%;
+}
+
+.cyber-card-half {
+  display: flex;
+  align-items: baseline;
+  gap: 3px;
+}
+
+.cyber-card-half-right {
+  justify-content: flex-end;
+  opacity: 0.85;
+  color: #00d2d3;
+}
+
+.cyber-card-half-right .cyber-card-number {
+  font-size: 1.4rem;
+  color: #00d2d3;
+  letter-spacing: -0.5px;
+}
+
+
+/* CENTER DIAL KNOB (Identico allo Screenshot) */
+.cyber-dial-container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100%;
+}
+
+.cyber-dial-outer {
+  width: 145px;
+  height: 145px;
+  border-radius: 50%;
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: radial-gradient(circle, #0e1726 0%, #060a12 85%);
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.7), inset 0 2px 4px rgba(255, 255, 255, 0.1);
+}
+
+/* Neon Green / Cyan Glowing Arc Ring */
+.cyber-dial-glow-ring {
+  position: absolute;
+  inset: -6px;
+  border-radius: 50%;
+  border: 4px solid #1e293b;
+  transition: all 0.3s ease;
+}
+
+.cyber-dial-outer.on .cyber-dial-glow-ring {
+  border-color: #00e676;
+  box-shadow: 0 0 25px rgba(0, 230, 118, 0.65), inset 0 0 12px rgba(0, 230, 118, 0.4);
+}
+
+.cyber-dial-btn {
+  width: 130px;
+  height: 130px;
+  border-radius: 50%;
+  background: radial-gradient(circle at 40% 40%, #152238, #0a111d);
+  border: 3px solid rgba(255, 255, 255, 0.12);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  outline: none;
+  transition: all 0.25s ease;
+  padding: 6px;
+}
+
+.cyber-dial-btn:hover {
+  transform: scale(1.02);
+}
+
+.cyber-dial-state-text {
+  font-size: 0.82rem;
+  font-weight: 800;
+  letter-spacing: 1px;
+  color: #64748b;
+  margin-bottom: 2px;
+}
+
+.cyber-dial-outer.on .cyber-dial-state-text {
+  color: #00e676;
+  text-shadow: 0 0 10px rgba(0, 230, 118, 0.8);
+}
+
+.cyber-dial-power-svg {
+  width: 32px;
+  height: 32px;
+  stroke: #64748b;
+  stroke-width: 2.2;
+  fill: none;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+  transition: all 0.25s ease;
+}
+
+.cyber-dial-outer.on .cyber-dial-power-svg {
+  stroke: #00e676;
+  filter: drop-shadow(0 0 10px #00e676);
+}
+
+.cyber-dial-device-name {
+  font-size: 0.64rem;
+  font-weight: 700;
+  letter-spacing: 0.8px;
+  color: #94a3b8;
+  margin-top: 4px;
+}
+
+/* Middle Section: Real-time Fluorescent Undulating Waveform */
+.cyber-waveform-section {
+  background: rgba(15, 23, 42, 0.65);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 14px;
+  backdrop-filter: blur(16px);
+  padding: 10px 16px 8px;
+  display: flex;
+  flex-direction: column;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.45);
+  flex: 1.1;
+  min-height: 140px;
+  position: relative;
+}
+
+.cyber-waveform-meta {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 0.72rem;
+  color: #94a3b8;
+}
+
+.cyber-sub-status {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  font-weight: 600;
+}
+
+.cyber-pulse-dot {
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  background: #00e676;
+  box-shadow: 0 0 8px #00e676;
+}
+
+.cyber-update-hint {
+  color: #64748b;
+  font-style: italic;
+  font-size: 0.7rem;
+}
+
+.cyber-chart-wrapper {
+  flex: 1;
+  width: 100%;
+  position: relative;
+  min-height: 90px;
+  margin-top: 4px;
+}
+
+.cyber-chart-wrapper canvas {
+  width: 100% !important;
+  height: 100% !important;
+}
+
+.cyber-badge-center-row {
+  display: flex;
+  justify-content: center;
+  margin-top: -6px;
+  margin-bottom: 2px;
+  z-index: 5;
+}
+
+.cyber-center-pill {
+  background: rgba(10, 16, 28, 0.9);
+  border: 1px solid rgba(0, 242, 254, 0.4);
+  color: #00f2fe;
+  font-size: 0.7rem;
+  font-weight: 800;
+  letter-spacing: 1px;
+  padding: 3px 14px;
+  border-radius: 12px;
+  box-shadow: 0 0 14px rgba(0, 242, 254, 0.25);
+}
+
+/* Bottom: 12-Month Glowing Glass Pillar Bar Chart */
+.cyber-months-section {
+  background: rgba(15, 23, 42, 0.65);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 14px;
+  backdrop-filter: blur(16px);
+  padding: 8px 14px 6px;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  height: 142px;
+  flex-shrink: 0;
+}
+
+.cyber-months-top-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+}
+
+.cyber-months-title {
+  font-size: 0.72rem;
+  font-weight: 800;
+  letter-spacing: 0.8px;
+  color: #94a3b8;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.cyber-months-title span#cyberYearDisplay {
+  color: #00f2fe;
+  font-weight: 900;
+  text-shadow: 0 0 8px rgba(0, 242, 254, 0.6);
+}
+
+.cyber-scroll-hint {
+  font-size: 0.64rem;
+  color: #64748b;
+}
+
+.cyber-months-body {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  width: 100%;
+  flex: 1;
+}
+
+.cyber-nav-chevron {
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  color: #94a3b8;
+  width: 28px;
+  height: 48px;
+  border-radius: 8px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: all 0.2s;
+  flex-shrink: 0;
+}
+
+.cyber-nav-chevron:hover {
+  background: rgba(0, 242, 254, 0.15);
+  color: #00f2fe;
+  border-color: #00f2fe;
+}
+
+.cyber-pillars-grid {
+  display: grid;
+  grid-template-columns: repeat(12, 1fr);
+  gap: 8px;
+  flex: 1;
+  height: 100%;
+  align-items: flex-end;
+}
+
+.cyber-pillar-col {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  height: 100%;
+  justify-content: flex-end;
+  gap: 4px;
+  cursor: pointer;
+  transition: transform 0.2s ease;
+}
+
+.cyber-pillar-col:hover {
+  transform: translateY(-2px);
+}
+
+.cyber-pillar-val {
+  font-size: 0.62rem;
+  font-weight: 700;
+  color: #00f2fe;
+  font-variant-numeric: tabular-nums;
+  text-shadow: 0 0 6px rgba(0, 242, 254, 0.6);
+  line-height: 1;
+  white-space: nowrap;
+}
+
+.cyber-pillar-track {
+  width: 100%;
+  height: 68px;
+  background: rgba(255, 255, 255, 0.04);
+  border: 1px solid rgba(255, 255, 255, 0.06);
+  border-radius: 10px;
+  display: flex;
+  align-items: flex-end;
+  overflow: hidden;
+  position: relative;
+  box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.4);
+}
+
+.cyber-pillar-fill {
+  width: 100%;
+  background: linear-gradient(180deg, #00f2fe 0%, #00e676 100%);
+  border-radius: 8px;
+  box-shadow: 0 0 12px rgba(0, 242, 254, 0.6);
+  transition: height 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+  min-height: 4px;
+}
+
+.cyber-pillar-col.active .cyber-pillar-track {
+  border-color: #00f2fe;
+  box-shadow: 0 0 10px rgba(0, 242, 254, 0.4);
+}
+
+.cyber-pillar-month {
+  font-size: 0.64rem;
+  font-weight: 600;
+  color: #64748b;
+  text-transform: capitalize;
+  white-space: nowrap;
+  letter-spacing: 0.2px;
+}
+
+.cyber-pillar-col.active .cyber-pillar-month {
+  color: #00f2fe;
+  font-weight: 800;
+  text-shadow: 0 0 6px rgba(0, 242, 254, 0.5);
+}

@@ -1,0 +1,15 @@
+{
+    "ip": "192.168.1.xxx",
+    "email": "tuamail@dominio.com",
+    "password": "tua_password",
+    "device_name": "Tapo P110",
+    "demo_mode": false,
+    "poll_interval": 4.0,
+    "host": "127.0.0.1",
+    "port": 8000,
+    "theme": "cyber",
+    "minimize_to_tray": false,
+    "minimize_on_start": false,
+    "start_with_windows": false,
+    "show_desktop_gadget": false
+}

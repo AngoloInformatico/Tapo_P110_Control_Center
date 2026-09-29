@@ -1,0 +1,745 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Tapo P110 — Gadget Desktop</title>
+  <link rel="icon" type="image/x-icon" href="/Icona/icon.ico">
+  <style>
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+      user-select: none;
+      -webkit-user-select: none;
+    }
+
+    :root {
+      --cyan: #38bdf8;
+      --cyan-glow: rgba(56, 189, 248, 0.45);
+      --emerald: #10b981;
+      --emerald-glow: rgba(16, 185, 129, 0.45);
+      --amber: #fbbf24;
+      --purple: #c084fc;
+      --text-main: #f8fafc;
+      --text-muted: #94a3b8;
+      --card-bg: rgba(255, 255, 255, 0.04);
+      --card-border: rgba(255, 255, 255, 0.08);
+      --glass-blur: blur(24px);
+    }
+
+    body {
+      background: radial-gradient(135% 100% at 50% 0%, rgba(22, 34, 62, 0.88) 0%, rgba(8, 12, 24, 0.94) 100%);
+      color: var(--text-main);
+      font-family: 'Segoe UI Variable', 'Segoe UI', -apple-system, BlinkMacSystemFont, Roboto, sans-serif;
+      overflow: hidden;
+      width: 100vw;
+      height: 100vh;
+      display: flex;
+      flex-direction: column;
+      border: 1px solid rgba(56, 189, 248, 0.28);
+      border-radius: 16px;
+      box-shadow: 
+        0 18px 40px rgba(0, 0, 0, 0.75), 
+        0 0 25px rgba(14, 165, 233, 0.16),
+        inset 0 1px 1px rgba(255, 255, 255, 0.2);
+      backdrop-filter: var(--glass-blur) saturate(190%);
+      -webkit-backdrop-filter: var(--glass-blur) saturate(190%);
+      position: relative;
+    }
+
+    /* Draggable Header */
+    .gadget-header {
+      height: 32px;
+      min-height: 32px;
+      background: rgba(255, 255, 255, 0.03);
+      border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 0 10px;
+      -webkit-app-region: drag;
+      cursor: grab;
+    }
+
+    .gadget-title-box {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+
+    .gadget-dot {
+      width: 7px;
+      height: 7px;
+      border-radius: 50%;
+      background: var(--emerald);
+      box-shadow: 0 0 8px var(--emerald);
+      transition: all 0.3s ease;
+    }
+
+    .gadget-dot.pulse {
+      animation: pulse-dot 2s infinite ease-in-out;
+    }
+
+    @keyframes pulse-dot {
+      0%, 100% { transform: scale(0.9); opacity: 0.8; }
+      50% { transform: scale(1.25); opacity: 1; filter: drop-shadow(0 0 5px var(--emerald)); }
+    }
+
+    .gadget-dot.off {
+      background: #475569;
+      box-shadow: none;
+      animation: none;
+    }
+
+    .gadget-title {
+      font-size: 0.74rem;
+      font-weight: 700;
+      color: #cbd5e1;
+      letter-spacing: 0.4px;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      max-width: 130px;
+    }
+
+    .gadget-actions {
+      display: flex;
+      align-items: center;
+      gap: 4px;
+      -webkit-app-region: no-drag;
+    }
+
+    .gadget-btn-icon {
+      background: rgba(255, 255, 255, 0.05);
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      color: #94a3b8;
+      cursor: pointer;
+      width: 22px;
+      height: 22px;
+      border-radius: 5px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: all 0.2s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+
+    .gadget-btn-icon:hover {
+      background: rgba(56, 189, 248, 0.2);
+      border-color: var(--cyan);
+      color: #ffffff;
+      box-shadow: 0 0 8px var(--cyan-glow);
+    }
+
+    .gadget-btn-close {
+      background: rgba(255, 255, 255, 0.05);
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      color: #94a3b8;
+      font-size: 13px;
+      cursor: pointer;
+      width: 22px;
+      height: 22px;
+      border-radius: 5px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: all 0.2s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+
+    .gadget-btn-close:hover {
+      background: rgba(239, 68, 68, 0.35);
+      border-color: #ef4444;
+      color: #ffffff;
+      box-shadow: 0 0 10px rgba(239, 68, 68, 0.5);
+    }
+
+    /* Body Container */
+    .gadget-body {
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: space-between;
+      padding: 6px 10px 8px;
+      overflow: hidden;
+      min-height: 0;
+    }
+
+    /* Compact Power Dial */
+    .power-stage {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      margin-top: 1px;
+    }
+
+    .power-dial-outer {
+      position: relative;
+      width: 62px;
+      height: 62px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: radial-gradient(circle, #1a2538, #0a0f1c);
+      border: 2px solid rgba(255, 255, 255, 0.1);
+      box-shadow: 0 4px 14px rgba(0, 0, 0, 0.6);
+      transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+
+    .power-dial-outer.on {
+      border-color: var(--cyan);
+      box-shadow: 0 0 20px var(--cyan-glow), inset 0 0 12px var(--cyan-glow);
+    }
+
+    .power-button {
+      -webkit-app-region: no-drag;
+      width: 48px;
+      height: 48px;
+      border-radius: 50%;
+      background: radial-gradient(circle at 35% 35%, #1e293b, #090e18);
+      border: 1.5px solid rgba(255, 255, 255, 0.08);
+      color: #64748b;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      outline: none;
+      transition: all 0.2s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+
+    .power-dial-outer.on .power-button {
+      background: radial-gradient(circle at 35% 35%, #0284c7, #0369a1);
+      border-color: #7dd3fc;
+      color: #ffffff;
+      box-shadow: 0 0 14px rgba(14, 165, 233, 0.8), inset 0 1px 2px rgba(255, 255, 255, 0.4);
+    }
+
+    .power-button:active {
+      transform: scale(0.92);
+    }
+
+    .power-button svg {
+      width: 24px;
+      height: 24px;
+      stroke: currentColor;
+      stroke-width: 2.4;
+      fill: none;
+      stroke-linecap: round;
+      stroke-linejoin: round;
+    }
+
+    .power-status-label {
+      margin-top: 3px;
+      font-size: 0.72rem;
+      font-weight: 800;
+      letter-spacing: 1px;
+      color: #64748b;
+      transition: all 0.3s ease;
+    }
+
+    .power-status-label.on {
+      color: var(--cyan);
+      text-shadow: 0 0 8px var(--cyan-glow);
+    }
+
+    /* 2x2 Telemetry Grid */
+    .telemetry-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 6px;
+      width: 100%;
+      margin-top: 4px;
+    }
+
+    .telem-card {
+      background: var(--card-bg);
+      border: 1px solid var(--card-border);
+      border-radius: 9px;
+      padding: 5px 6px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
+      position: relative;
+      overflow: hidden;
+      transition: transform 0.2s ease, border-color 0.2s ease;
+    }
+
+    .telem-card:hover {
+      transform: translateY(-1px);
+      border-color: rgba(255, 255, 255, 0.16);
+    }
+
+    .telem-card.card-p::before {
+      content: '';
+      position: absolute;
+      top: 0; left: 0; right: 0;
+      height: 2px;
+      background: linear-gradient(90deg, transparent, var(--cyan), transparent);
+    }
+
+    .telem-card.card-v::before {
+      content: '';
+      position: absolute;
+      top: 0; left: 0; right: 0;
+      height: 2px;
+      background: linear-gradient(90deg, transparent, var(--amber), transparent);
+    }
+
+    .telem-card.card-i::before {
+      content: '';
+      position: absolute;
+      top: 0; left: 0; right: 0;
+      height: 2px;
+      background: linear-gradient(90deg, transparent, var(--purple), transparent);
+    }
+
+    .telem-card.card-e::before {
+      content: '';
+      position: absolute;
+      top: 0; left: 0; right: 0;
+      height: 2px;
+      background: linear-gradient(90deg, transparent, var(--emerald), transparent);
+    }
+
+    .telem-title {
+      font-size: 0.58rem;
+      font-weight: 700;
+      color: #94a3b8;
+      text-transform: uppercase;
+      letter-spacing: 0.4px;
+    }
+
+    .telem-val-box {
+      display: flex;
+      align-items: baseline;
+      justify-content: center;
+      gap: 2px;
+      margin-top: 1px;
+      width: 100%;
+    }
+
+    .telem-number {
+      font-size: 0.96rem;
+      font-weight: 800;
+      color: #ffffff;
+      font-variant-numeric: tabular-nums;
+      line-height: 1.1;
+    }
+
+    .telem-unit {
+      font-size: 0.65rem;
+      font-weight: 700;
+      color: #38bdf8;
+      line-height: 1;
+    }
+
+    .card-v .telem-unit { color: var(--amber); }
+    .card-i .telem-unit { color: var(--purple); }
+    .card-e .telem-unit { color: var(--emerald); }
+
+    .telem-sub {
+      font-size: 0.62rem;
+      font-weight: 600;
+      color: #a78bfa;
+      margin-top: 1px;
+      line-height: 1;
+    }
+
+    /* Open Dashboard Link Button */
+    .gadget-link-btn {
+      -webkit-app-region: no-drag;
+      background: rgba(56, 189, 248, 0.08);
+      border: 1px solid rgba(56, 189, 248, 0.22);
+      border-radius: 20px;
+      color: #38bdf8;
+      font-size: 0.68rem;
+      font-weight: 600;
+      padding: 4px 12px;
+      cursor: pointer;
+      margin-top: 4px;
+      transition: all 0.2s cubic-bezier(0.16, 1, 0.3, 1);
+      display: flex;
+      align-items: center;
+      gap: 4px;
+    }
+
+    .gadget-link-btn:hover {
+      background: rgba(56, 189, 248, 0.2);
+      border-color: var(--cyan);
+      color: #ffffff;
+      box-shadow: 0 0 10px var(--cyan-glow);
+    }
+
+    /* Exit Confirmation Modal */
+    .exit-modal-overlay {
+      -webkit-app-region: no-drag;
+      position: absolute;
+      inset: 0;
+      background: rgba(4, 7, 16, 0.88);
+      backdrop-filter: blur(16px);
+      -webkit-backdrop-filter: blur(16px);
+      z-index: 100;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      padding: 14px;
+      text-align: center;
+      border-radius: 16px;
+      opacity: 0;
+      pointer-events: none;
+      transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+      transform: scale(0.95);
+    }
+
+    .exit-modal-overlay.active {
+      opacity: 1;
+      pointer-events: auto;
+      transform: scale(1);
+    }
+
+    .modal-icon-badge {
+      width: 36px;
+      height: 36px;
+      border-radius: 50%;
+      background: rgba(239, 68, 68, 0.15);
+      border: 1px solid rgba(239, 68, 68, 0.4);
+      color: #ef4444;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-bottom: 8px;
+      box-shadow: 0 0 15px rgba(239, 68, 68, 0.3);
+    }
+
+    .modal-icon-badge svg {
+      width: 18px;
+      height: 18px;
+    }
+
+    .modal-title {
+      font-size: 0.88rem;
+      font-weight: 700;
+      color: #ffffff;
+      margin-bottom: 3px;
+    }
+
+    .modal-desc {
+      font-size: 0.68rem;
+      color: #94a3b8;
+      line-height: 1.3;
+      margin-bottom: 12px;
+    }
+
+    .modal-actions {
+      -webkit-app-region: no-drag;
+      display: flex;
+      flex-direction: column;
+      gap: 6px;
+      width: 100%;
+    }
+
+    .btn-modal-exit-all {
+      -webkit-app-region: no-drag;
+      background: linear-gradient(135deg, #ef4444, #dc2626);
+      border: none;
+      color: #ffffff;
+      font-size: 0.74rem;
+      font-weight: 700;
+      padding: 7px 12px;
+      border-radius: 7px;
+      cursor: pointer;
+      transition: all 0.2s ease;
+      box-shadow: 0 2px 10px rgba(239, 68, 68, 0.4);
+    }
+
+    .btn-modal-exit-all:hover {
+      background: linear-gradient(135deg, #f87171, #ef4444);
+      box-shadow: 0 0 14px rgba(239, 68, 68, 0.7);
+    }
+
+    .btn-modal-hide-only {
+      -webkit-app-region: no-drag;
+      background: rgba(56, 189, 248, 0.12);
+      border: 1px solid rgba(56, 189, 248, 0.28);
+      color: #38bdf8;
+      font-size: 0.72rem;
+      font-weight: 600;
+      padding: 6px 12px;
+      border-radius: 7px;
+      cursor: pointer;
+      transition: all 0.2s ease;
+    }
+
+    .btn-modal-hide-only:hover {
+      background: rgba(56, 189, 248, 0.22);
+      color: #ffffff;
+    }
+
+    .btn-modal-cancel {
+      -webkit-app-region: no-drag;
+      background: transparent;
+      border: none;
+      color: #64748b;
+      font-size: 0.68rem;
+      font-weight: 600;
+      padding: 4px;
+      cursor: pointer;
+      transition: color 0.2s ease;
+    }
+
+    .btn-modal-cancel:hover {
+      color: #cbd5e1;
+    }
+  </style>
+</head>
+<body>
+  <!-- Draggable Header -->
+  <div class="gadget-header">
+    <div class="gadget-title-box">
+      <span class="gadget-dot off" id="gadgetConnDot"></span>
+      <span class="gadget-title" id="gadgetTitle">Tapo P110</span>
+    </div>
+    <div class="gadget-actions">
+      <button class="gadget-btn-icon" id="btnOpenDashboard" title="Apri Dashboard Principale">
+        <svg viewBox="0 0 24 24" width="12" height="12" fill="none" stroke="currentColor" stroke-width="2.3" stroke-linecap="round" stroke-linejoin="round">
+          <rect x="3" y="3" width="18" height="18" rx="2" ry="2"></rect>
+          <line x1="9" y1="3" x2="9" y2="21"></line>
+        </svg>
+      </button>
+      <button class="gadget-btn-close" id="btnOpenExitModal" title="Chiudi Widget / Esci">✕</button>
+    </div>
+  </div>
+
+  <!-- Main Body Content -->
+  <div class="gadget-body">
+    <!-- Compact Power Dial -->
+    <div class="power-stage">
+      <div class="power-dial-outer" id="powerOuter">
+        <button class="power-button" id="btnGadgetPower" aria-label="Accendi o Spegni Presa">
+          <svg viewBox="0 0 24 24">
+            <path d="M18.36 6.64a9 9 0 1 1-12.73 0"></path>
+            <line x1="12" y1="2" x2="12" y2="12"></line>
+          </svg>
+        </button>
+      </div>
+      <div class="power-status-label" id="powerLabel">SPENTO</div>
+    </div>
+
+    <!-- 2x2 Telemetry Grid -->
+    <div class="telemetry-grid">
+      <!-- Potenza -->
+      <div class="telem-card card-p">
+        <span class="telem-title">Potenza</span>
+        <div class="telem-val-box">
+          <span class="telem-number" id="valPower">0.0</span>
+          <span class="telem-unit">W</span>
+        </div>
+      </div>
+
+      <!-- Tensione -->
+      <div class="telem-card card-v">
+        <span class="telem-title">Tensione</span>
+        <div class="telem-val-box">
+          <span class="telem-number" id="valVoltage">0.000</span>
+          <span class="telem-unit">V</span>
+        </div>
+      </div>
+
+      <!-- Corrente -->
+      <div class="telem-card card-i">
+        <span class="telem-title">Corrente</span>
+        <div class="telem-val-box">
+          <span class="telem-number" id="valCurrentMa">0</span>
+          <span class="telem-unit">mA</span>
+        </div>
+        <span class="telem-sub" id="valCurrentAmp">0.000 A</span>
+      </div>
+
+      <!-- Energia Oggi -->
+      <div class="telem-card card-e">
+        <span class="telem-title">Energia Oggi</span>
+        <div class="telem-val-box">
+          <span class="telem-number" id="valEnergy">0.00</span>
+          <span class="telem-unit">kWh</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- Bottom Action Pill -->
+    <button class="gadget-link-btn" id="btnOpenDashboardLink">
+      <span>Dashboard Completa</span>
+      <span>↗</span>
+    </button>
+  </div>
+
+  <!-- Exit Confirmation Modal Dialog -->
+  <div class="exit-modal-overlay" id="exitModalOverlay">
+    <div class="modal-icon-badge">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.3" stroke-linecap="round" stroke-linejoin="round">
+        <path d="M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4"></path>
+        <polyline points="16 17 21 12 16 7"></polyline>
+        <line x1="21" y1="12" x2="9" y2="12"></line>
+      </svg>
+    </div>
+    <div class="modal-title">Chiudi Applicazione</div>
+    <div class="modal-desc">Vuoi chiudere solo il gadget o terminare l'applicazione Tapo P110?</div>
+    <div class="modal-actions">
+      <button class="btn-modal-exit-all" id="btnConfirmExitAll">Chiudi Tutta l'App</button>
+      <button class="btn-modal-hide-only" id="btnConfirmHideOnly">Nascondi Solo Widget</button>
+      <button class="btn-modal-cancel" id="btnCancelExit">Annulla</button>
+    </div>
+  </div>
+
+  <script>
+    let isDeviceOn = false;
+    const powerOuter = document.getElementById("powerOuter");
+    const powerLabel = document.getElementById("powerLabel");
+    const btnGadgetPower = document.getElementById("btnGadgetPower");
+    const btnOpenDashboard = document.getElementById("btnOpenDashboard");
+    const btnOpenDashboardLink = document.getElementById("btnOpenDashboardLink");
+    const gadgetTitle = document.getElementById("gadgetTitle");
+    const gadgetConnDot = document.getElementById("gadgetConnDot");
+
+    const valPower = document.getElementById("valPower");
+    const valVoltage = document.getElementById("valVoltage");
+    const valCurrentMa = document.getElementById("valCurrentMa");
+    const valCurrentAmp = document.getElementById("valCurrentAmp");
+    const valEnergy = document.getElementById("valEnergy");
+
+    // Modal elements
+    const exitModalOverlay = document.getElementById("exitModalOverlay");
+    const btnOpenExitModal = document.getElementById("btnOpenExitModal");
+    const btnConfirmExitAll = document.getElementById("btnConfirmExitAll");
+    const btnConfirmHideOnly = document.getElementById("btnConfirmHideOnly");
+    const btnCancelExit = document.getElementById("btnCancelExit");
+
+    function renderState(state) {
+      if (!state) return;
+      isDeviceOn = Boolean(state.device_on);
+
+      // Aggiorna stato visuale del pulsante principale
+      powerOuter.classList.toggle("on", isDeviceOn);
+      powerLabel.classList.toggle("on", isDeviceOn);
+      powerLabel.textContent = isDeviceOn ? "ACCESO" : "SPENTO";
+
+      if (state.device_name) gadgetTitle.textContent = state.device_name;
+      
+      const isOnline = Boolean(state.is_connected || state.demo_mode);
+      gadgetConnDot.classList.toggle("off", !isOnline);
+      gadgetConnDot.classList.toggle("pulse", isOnline && isDeviceOn);
+
+      // REQUISITO CRITICO: Se la presa è accesa mostra i valori reali con 3 decimali di tensione.
+      // Se la presa è spenta, tutti i valori a display crollano rigorosamente a 0!
+      if (isDeviceOn) {
+        const p = Number(state.active_power_w || 0.0);
+        const v = Number(state.voltage_v || 0.0);
+        const ma = Number(state.current_ma || 0.0);
+        const kwh = Number(state.today_kwh || 0.0);
+
+        valPower.textContent = p.toFixed(1);
+        valVoltage.textContent = v.toFixed(3);
+        valCurrentMa.textContent = Math.round(ma).toString();
+        valCurrentAmp.textContent = (ma / 1000.0).toFixed(3) + " A";
+        valEnergy.textContent = kwh.toFixed(2);
+      } else {
+        valPower.textContent = "0.0";
+        valVoltage.textContent = "0.000";
+        valCurrentMa.textContent = "0";
+        valCurrentAmp.textContent = "0.000 A";
+        valEnergy.textContent = "0.00";
+      }
+    }
+
+    async function togglePower() {
+      try {
+        const res = await fetch("/api/power", {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({ state: !isDeviceOn })
+        }).then(r => r.json());
+        if (res && res.state) {
+          renderState(res.state);
+        }
+      } catch (e) {
+        console.error("Errore toggle power:", e);
+      }
+    }
+
+    async function openDashboard() {
+      try {
+        await fetch("/api/app/open-dashboard", { method: "POST" });
+      } catch (e) {
+        console.error("Errore apertura dashboard:", e);
+      }
+    }
+
+    btnGadgetPower.addEventListener("click", togglePower);
+    if (btnOpenDashboard) btnOpenDashboard.addEventListener("click", openDashboard);
+    if (btnOpenDashboardLink) btnOpenDashboardLink.addEventListener("click", openDashboard);
+
+    // Gestione Modal Chiusura Interattiva
+    btnOpenExitModal.addEventListener("click", () => {
+      exitModalOverlay.classList.add("active");
+    });
+
+    btnCancelExit.addEventListener("click", () => {
+      exitModalOverlay.classList.remove("active");
+    });
+
+    btnConfirmHideOnly.addEventListener("click", async () => {
+      btnConfirmHideOnly.disabled = true;
+      btnConfirmHideOnly.textContent = "Nascondo...";
+      try {
+        await fetch("/api/app/hide-gadget", { method: "POST" });
+      } catch (e) {
+        console.error("Errore hide gadget:", e);
+      } finally {
+        exitModalOverlay.classList.remove("active");
+        btnConfirmHideOnly.disabled = false;
+        btnConfirmHideOnly.textContent = "Nascondi Solo Widget";
+      }
+    });
+
+    btnConfirmExitAll.addEventListener("click", async () => {
+      btnConfirmExitAll.disabled = true;
+      btnConfirmExitAll.textContent = "Chiusura in corso...";
+      try {
+        await fetch("/api/app/exit", { method: "POST" });
+      } catch (e) {
+        console.error("Errore exit app:", e);
+      }
+    });
+
+    // WebSocket Telemetria + Polling di sincronizzazione
+    function connectWS() {
+      const proto = window.location.protocol === "https:" ? "wss:" : "ws:";
+      const ws = new WebSocket(`${proto}//${window.location.host}/ws`);
+      ws.onmessage = (e) => {
+        try {
+          const d = JSON.parse(e.data);
+          if (d.type === "telemetry" && d.payload) {
+            renderState(d.payload);
+          }
+        } catch (err) {}
+      };
+      ws.onclose = () => setTimeout(connectWS, 2500);
+    }
+
+    setInterval(async () => {
+      try {
+        const res = await fetch("/api/status").then(r => r.json());
+        if (res) renderState(res);
+      } catch (e) {}
+    }, 2000);
+
+    fetch("/api/status").then(r => r.json()).then(renderState).catch(() => {});
+    connectWS();
+  </script>
+</body>
+</html>

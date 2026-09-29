@@ -1,0 +1,648 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Tapo P110 Control Center</title>
+  <link rel="icon" type="image/x-icon" href="/Icona/icon.ico">
+  <!-- Base Layout & Reset Styles -->
+  <link rel="stylesheet" href="/static/css/base.css">
+  <!-- Active Dynamic Theme CSS -->
+  <link id="themeStylesheet" rel="stylesheet" href="/static/css/theme-cyber.css">
+  <script src="/static/js/chart.umd.min.js"></script>
+</head>
+<body data-theme="cyber">
+
+  <!-- =========================================================================
+       VIEW 1: CYBER NEON GLASSMORPHISM (Identico allo Screenshot 1)
+       ========================================================================= -->
+  <div id="view-cyber" class="theme-view active">
+    <!-- Header -->
+    <header class="cyber-header">
+      <div class="cyber-brand">
+        <div class="cyber-logo-badge">
+          <svg viewBox="0 0 40 40" class="tapo-logo-svg">
+            <rect width="40" height="40" rx="10" fill="#00d2d3"/>
+            <text x="50%" y="58%" text-anchor="middle" fill="#070a14" font-family="'Segoe UI', sans-serif" font-weight="900" font-size="14">tapo</text>
+          </svg>
+        </div>
+        <div class="cyber-brand-text">
+          <h1 class="cyber-brand-title">Tapo Energy Monitor</h1>
+          <span class="cyber-header-ip ip-text">IP: --</span>
+        </div>
+      </div>
+
+      <div class="cyber-header-right">
+        <!-- Theme Switcher -->
+        <div class="theme-pill-select">
+          <span>Tema:</span>
+          <select class="select-theme-dropdown" data-role="theme-selector">
+            <option value="cyber" selected>Cyber Neon Glass</option>
+            <option value="fluent">Windows 11 Mica</option>
+            <option value="cockpit">Pro Cockpit High-Tech</option>
+          </select>
+        </div>
+
+        <!-- Notification Bell -->
+        <div class="header-icon-btn" title="Notifiche">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <path d="M18 8A6 6 0 0 0 6 8c0 7-3 9-3 9h18s-3-2-3-9"></path>
+            <path d="M13.73 21a2 2 0 0 1-3.46 0"></path>
+          </svg>
+          <span class="cyber-bell-dot"></span>
+        </div>
+
+        <!-- Settings Cog -->
+        <button class="header-icon-btn btn-trigger-settings" title="Impostazioni Presa Tapo">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <circle cx="12" cy="12" r="3"></circle>
+            <path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1 0 2.83 2 2 0 0 1-2.83 0l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-2 2 2 2 0 0 1-2-2v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83 0 2 2 0 0 1 0-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1-2-2 2 2 0 0 1 2-2h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 0-2.83 2 2 0 0 1 2.83 0l.06.06a1.65 1.65 0 0 0 1.82.33H9a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 2-2 2 2 0 0 1 2 2v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 0 2 2 0 0 1 0 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82V9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 2 2 2 2 0 0 1-2 2h-.09a1.65 1.65 0 0 0-1.51 1z"></path>
+          </svg>
+        </button>
+
+        <!-- User Avatar -->
+        <div class="cyber-avatar-circle" title="Utente Tapo">
+          <svg viewBox="0 0 32 32" width="28" height="28">
+            <circle cx="16" cy="16" r="16" fill="#e2e8f0"/>
+            <circle cx="16" cy="12" r="6" fill="#718096"/>
+            <path d="M6 28 c0 -6 5 -9 10 -9 s10 3 10 9" fill="#718096"/>
+          </svg>
+        </div>
+      </div>
+    </header>
+
+    <!-- Main Dashboard Container -->
+    <div class="cyber-main-body">
+      <!-- Top Control Row: 2 Cards Left, Center Big Power Knob, 2 Cards Right -->
+      <section class="cyber-hero-row">
+        <!-- Left 2 Cards Stacked -->
+        <div class="cyber-metric-stack">
+          <div class="cyber-card">
+            <div class="cyber-card-label">POTENZA ATTIVA</div>
+            <div class="cyber-card-val-row">
+              <span class="cyber-card-number val-power">0.0</span>
+              <span class="cyber-card-unit">W</span>
+            </div>
+          </div>
+          <div class="cyber-card">
+            <div class="cyber-card-label">CORRENTE</div>
+            <div class="cyber-card-dual-row">
+              <div class="cyber-card-half">
+                <span class="cyber-card-number val-current-ma">0</span>
+                <span class="cyber-card-unit">mA</span>
+              </div>
+              <div class="cyber-card-half cyber-card-half-right">
+                <span class="cyber-card-number val-current-amp">0.000 A</span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Center Stage: Big Circular Neon Dial -->
+        <div class="cyber-dial-container">
+          <div class="cyber-dial-outer" id="cyberDialOuter">
+            <div class="cyber-dial-glow-ring"></div>
+            <button class="cyber-dial-btn btn-power-toggle" aria-label="Accendi Spegni Presa">
+              <div class="cyber-dial-state-text power-state-label">OFF</div>
+              <svg class="cyber-dial-power-svg" viewBox="0 0 24 24">
+                <path d="M18.36 6.64a9 9 0 1 1-12.73 0"></path>
+                <line x1="12" y1="2" x2="12" y2="12"></line>
+              </svg>
+              <div class="cyber-dial-device-name device-name-display">TAPO P110</div>
+            </button>
+          </div>
+        </div>
+
+        <!-- Right 2 Cards Stacked -->
+        <div class="cyber-metric-stack">
+          <div class="cyber-card">
+            <div class="cyber-card-label">TENSIONE RETE</div>
+            <div class="cyber-card-val-row">
+              <span class="cyber-card-number val-voltage">0.000</span>
+              <span class="cyber-card-unit">V</span>
+            </div>
+          </div>
+          <div class="cyber-card">
+            <div class="cyber-card-label">ENERGIA OGGI</div>
+            <div class="cyber-card-val-row">
+              <span class="cyber-card-number val-energy-today">0.00</span>
+              <span class="cyber-card-unit">kWh</span>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Middle: Real-time Fluorescent Undulating Waveform -->
+      <section class="cyber-waveform-section">
+        <div class="cyber-waveform-meta">
+          <span class="cyber-sub-status"><span class="cyber-pulse-dot"></span> <span class="conn-text">Connesso</span> • <span class="ip-text">192.168.1.xxx</span></span>
+          <span class="cyber-update-hint">Updated every 4 seconds</span>
+        </div>
+        <div class="cyber-chart-wrapper">
+          <canvas id="cyberWaveformCanvas"></canvas>
+        </div>
+        <div class="cyber-badge-center-row">
+          <div class="cyber-center-pill">REAL-TIME POWER CONSUMPTION</div>
+        </div>
+      </section>
+
+      <!-- Bottom: 12-Month Glowing Glass Pillar Bar Chart -->
+      <section class="cyber-months-section">
+        <div class="cyber-months-top-row">
+          <div class="cyber-months-title">
+            <span>CONSUMI MENSILI</span>
+            <span id="cyberYearDisplay">2026</span>
+          </div>
+          <span class="cyber-scroll-hint">(Usa rotellina mouse o frecce per scorrere gli anni)</span>
+        </div>
+        <div class="cyber-months-body">
+          <button class="cyber-nav-chevron btn-cyber-year-prev" id="btnCyberYearPrev" title="Anno Precedente">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="15 18 9 12 15 6"></polyline></svg>
+          </button>
+
+          <div class="cyber-pillars-grid" id="cyberMonthPillars">
+            <!-- 12 Months rendered dynamically via JS -->
+          </div>
+
+          <button class="cyber-nav-chevron btn-cyber-year-next" id="btnCyberYearNext" title="Anno Successivo">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="9 18 15 12 9 6"></polyline></svg>
+          </button>
+        </div>
+      </section>
+    </div>
+  </div>
+
+
+  <!-- =========================================================================
+       VIEW 2: WINDOWS 11 FLUENT MICA (Identico allo Screenshot 2)
+       ========================================================================= -->
+  <div id="view-fluent" class="theme-view">
+    <!-- Left Frosted Mica Sidebar -->
+    <aside class="fluent-sidebar">
+      <div class="fluent-sidebar-top">
+        <div class="fluent-tapo-icon">
+          <svg viewBox="0 0 32 32" width="24" height="24">
+            <rect width="32" height="32" rx="8" fill="#00b4d8"/>
+            <text x="50%" y="62%" text-anchor="middle" fill="#ffffff" font-family="'Segoe UI', sans-serif" font-weight="bold" font-size="11">tapo</text>
+          </svg>
+        </div>
+        <div class="fluent-brand-text">
+          <span class="fluent-brand-name">Tapo Energy Monitor</span>
+          <span class="fluent-sidebar-ip ip-text">IP: --</span>
+        </div>
+      </div>
+
+      <!-- Center Big Blue Concentric Power Dial -->
+      <div class="fluent-power-dial-stage">
+        <div class="fluent-power-button-outer" id="fluentPowerOuter">
+          <div class="fluent-ring-glow"></div>
+          <button class="fluent-power-btn btn-power-toggle" aria-label="Interruttore Principale Presa">
+            <svg viewBox="0 0 24 24">
+              <path d="M18.36 6.64a9 9 0 1 1-12.73 0"></path>
+              <line x1="12" y1="2" x2="12" y2="12"></line>
+            </svg>
+          </button>
+        </div>
+
+        <div class="fluent-device-type">P110 - Presa Intelligente</div>
+        <div class="fluent-power-status-title power-state-label-it">ACCESO</div>
+
+        <!-- Windows 11 Fluent Pill Toggle Switch -->
+        <div class="fluent-toggle-wrapper">
+          <div class="fluent-switch-pill btn-power-toggle" id="fluentSwitchPill">
+            <span class="fluent-switch-thumb"></span>
+            <span class="fluent-switch-text" id="fluentSwitchText">OFF</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="fluent-sidebar-footer">
+        <span class="fluent-version-badge" id="fluentVersionBadge">v1.0.11</span>
+      </div>
+    </aside>
+
+    <!-- Right Main Area -->
+    <section class="fluent-main-panel">
+      <!-- Top Device Info & Utility Bar -->
+      <header class="fluent-top-bar">
+        <div class="fluent-device-info">
+          <div class="fluent-plug-icon-box">
+            <svg viewBox="0 0 36 36" width="28" height="28">
+              <circle cx="18" cy="18" r="16" fill="#f8fafc" stroke="#cbd5e1" stroke-width="1.5"/>
+              <circle cx="13" cy="18" r="2.5" fill="#475569"/>
+              <circle cx="23" cy="18" r="2.5" fill="#475569"/>
+              <circle cx="18" cy="18" r="2.5" fill="#475569"/>
+            </svg>
+          </div>
+          <div>
+            <div class="fluent-device-header-title device-name-display">Tapo P110 - Salotto</div>
+            <div class="fluent-conn-status">
+              <span class="fluent-green-dot"></span>
+              <span class="conn-text">Connesso</span>
+              <span class="fluent-ip-badge ip-text">192.168.1.xxx</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="fluent-top-actions">
+          <!-- Theme Switcher -->
+          <div class="fluent-theme-select-box">
+            <select class="select-theme-dropdown" data-role="theme-selector">
+              <option value="cyber">Cyber Neon</option>
+              <option value="fluent" selected>Windows 11 Mica</option>
+              <option value="cockpit">Pro Cockpit</option>
+            </select>
+          </div>
+
+          <!-- Settings Cog (Lente di ingrandimento eliminata su richiesta dell'utente) -->
+          <button class="fluent-icon-btn btn-trigger-settings" title="Impostazioni">
+            <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="3"></circle><path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1 0 2.83 2 2 0 0 1-2.83 0l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-2 2 2 2 0 0 1-2-2v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83 0 2 2 0 0 1 0-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1-2-2 2 2 0 0 1 2-2h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 0-2.83 2 2 0 0 1 2.83 0l.06.06a1.65 1.65 0 0 0 1.82.33H9a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 2-2 2 2 0 0 1 2 2v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 0 2 2 0 0 1 0 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82V9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 2 2 2 2 0 0 1-2 2h-.09a1.65 1.65 0 0 0-1.51 1z"></path></svg>
+          </button>
+          <div class="fluent-user-avatar" title="Profilo Utente">
+            <svg viewBox="0 0 32 32" width="28" height="28"><circle cx="16" cy="16" r="15" fill="#3b82f6"/><path d="M10 24 c0 -4 3 -6 6 -6 s6 2 6 6" fill="#ffffff"/><circle cx="16" cy="12" r="4" fill="#ffffff"/></svg>
+          </div>
+        </div>
+      </header>
+
+      <!-- Row 1: 4 Horizontal Compact Cards Side-By-Side -->
+      <div class="fluent-cards-row">
+        <!-- Potenza Attiva con Micro Sparkline -->
+        <div class="fluent-card fluent-card-power">
+          <div class="fluent-card-header">
+            <div class="fluent-card-title">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"></polygon></svg>
+              Potenza Attiva
+            </div>
+            <div class="fluent-sparkle-badge">⚡</div>
+          </div>
+          <div class="fluent-card-value-box">
+            <span class="fluent-card-number val-power">0.00</span>
+            <span class="fluent-card-unit">W</span>
+          </div>
+          <div class="fluent-sparkline-row">
+            <span class="fluent-sparkline-label">Tenda live</span>
+            <div class="fluent-sparkline-container">
+              <canvas id="fluentSparklineCanvas" width="90" height="20"></canvas>
+            </div>
+          </div>
+        </div>
+
+        <!-- Tensione -->
+        <div class="fluent-card">
+          <div class="fluent-card-header">
+            <div class="fluent-card-title">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"></polygon></svg>
+              Tensione
+            </div>
+            <div class="fluent-info-badge">ℹ️</div>
+          </div>
+          <div class="fluent-card-value-box">
+            <span class="fluent-card-number val-voltage">0.000</span>
+            <span class="fluent-card-unit">V</span>
+          </div>
+        </div>
+
+        <!-- Corrente (Doppio valore mA + A) -->
+        <div class="fluent-card">
+          <div class="fluent-card-header">
+            <div class="fluent-card-title">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M22 12h-4l-3 9L9 3l-3 9H2"></path></svg>
+              Corrente
+            </div>
+            <div class="fluent-sparkle-badge">⚡</div>
+          </div>
+          <div class="fluent-card-value-box">
+            <span class="fluent-card-number val-current-ma">0.0</span>
+            <span class="fluent-card-unit">mA</span>
+          </div>
+          <div class="fluent-card-subtext val-current-amp">0.000 A</div>
+        </div>
+
+        <!-- Totale Oggi -->
+        <div class="fluent-card">
+          <div class="fluent-card-header">
+            <div class="fluent-card-title">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor"><rect x="2" y="7" width="20" height="14" rx="2" ry="2"></rect><path d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16"></path></svg>
+              Totale Oggi
+            </div>
+            <div class="fluent-info-badge">ℹ️</div>
+          </div>
+          <div class="fluent-card-value-box">
+            <span class="fluent-card-number val-energy-today">0.00</span>
+            <span class="fluent-card-unit">kWh</span>
+          </div>
+          <div class="fluent-card-subtext">Aggiornato in tempo reale</div>
+        </div>
+      </div>
+
+      <!-- Row 2: Grafico Potenza Istantanea (W) -->
+      <div class="fluent-chart-box">
+        <div class="fluent-chart-header">
+          <span class="fluent-chart-title">Grafico Potenza Istantanea (W)</span>
+          <span class="fluent-live-tag"><span class="fluent-blue-dot"></span> Live</span>
+        </div>
+        <div class="fluent-canvas-wrapper">
+          <canvas id="fluentLiveChartCanvas"></canvas>
+        </div>
+      </div>
+
+      <!-- Row 3: Storico Consumo Mensile Giorno per Giorno -->
+      <div class="fluent-chart-box fluent-monthly-box">
+        <div class="fluent-monthly-header">
+          <div>
+            <div class="fluent-chart-title">Storico Consumo Mensile</div>
+            <div class="fluent-monthly-meta">Giorno per giorno • <span id="fluentMonthSummaryText">0.0 kWh (media 0.00 kWh/g)</span></div>
+          </div>
+
+          <div class="fluent-month-nav">
+            <button class="fluent-nav-btn btn-month-prev" id="fluentBtnPrev">‹ Gennaio</button>
+            <span class="fluent-month-current" id="fluentCurrentMonthText">Febbraio 2026</span>
+            <button class="fluent-nav-btn btn-month-next" id="fluentBtnNext">Marzo ›</button>
+          </div>
+        </div>
+        <div class="fluent-canvas-wrapper-monthly">
+          <canvas id="fluentMonthlyChartCanvas"></canvas>
+        </div>
+      </div>
+    </section>
+  </div>
+
+
+  <!-- =========================================================================
+       VIEW 3: PRO COCKPIT / INDUSTRIAL HIGH-TECH (Valori SOPRA ai v-meter)
+       ========================================================================= -->
+  <div id="view-cockpit" class="theme-view">
+    <!-- Header -->
+    <header class="cockpit-top-bar">
+      <div class="cockpit-header-left">
+        <span class="cockpit-telemetry-badge">TELEMETRY</span>
+        <span class="cockpit-brand-title">Tapo Energy Monitor</span>
+        <span class="cockpit-ip-display ip-text">IP: 192.168.1.xxx</span>
+      </div>
+
+      <div class="cockpit-header-right">
+        <div class="cockpit-select-box">
+          <span class="cockpit-label">THEME:</span>
+          <select class="select-theme-dropdown" data-role="theme-selector">
+            <option value="cyber">Cyber Neon</option>
+            <option value="fluent">Windows 11 Mica</option>
+            <option value="cockpit" selected>Pro Cockpit</option>
+          </select>
+        </div>
+
+        <button class="cockpit-tool-btn btn-trigger-settings" title="Configuration Settings">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="3"></circle><path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1 0 2.83 2 2 0 0 1-2.83 0l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-2 2 2 2 0 0 1-2-2v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83 0 2 2 0 0 1 0-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1-2-2 2 2 0 0 1 2-2h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 0-2.83 2 2 0 0 1 2.83 0l.06.06a1.65 1.65 0 0 0 1.82.33H9a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 2-2 2 2 0 0 1 2 2v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 0 2 2 0 0 1 0 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82V9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 2 2 2 2 0 0 1-2 2h-.09a1.65 1.65 0 0 0-1.51 1z"></path></svg>
+        </button>
+      </div>
+    </header>
+
+    <!-- Top Row: Radial Semi-Circular Gauges + Center Turbine Power Dial -->
+    <div class="cockpit-gauges-row">
+      <!-- Gauge 1: Potenza Attiva (Valori SOPRA al v-meter) -->
+      <div class="cockpit-gauge-card">
+        <div class="cockpit-gauge-title">Potenza Attiva</div>
+        <div class="cockpit-gauge-val-box">
+          <div class="cockpit-gauge-num val-power">0</div>
+          <div class="cockpit-gauge-unit">W</div>
+        </div>
+        <div class="cockpit-semi-gauge">
+          <svg viewBox="0 0 140 85" class="gauge-svg">
+            <path d="M 16 75 A 54 54 0 0 1 124 75" fill="none" stroke="#252a38" stroke-width="11" stroke-linecap="round"/>
+            <path id="cockpitArcPower" d="M 16 75 A 54 54 0 0 1 124 75" fill="none" stroke="#10b981" stroke-width="11" stroke-dasharray="170" stroke-dashoffset="50" stroke-linecap="round"/>
+          </svg>
+        </div>
+      </div>
+
+      <!-- Gauge 2: Tensione Rete (Valori SOPRA al v-meter) -->
+      <div class="cockpit-gauge-card">
+        <div class="cockpit-gauge-title">Tensione Rete</div>
+        <div class="cockpit-gauge-val-box">
+          <div class="cockpit-gauge-num val-voltage">0.000</div>
+          <div class="cockpit-gauge-unit">V</div>
+        </div>
+        <div class="cockpit-semi-gauge">
+          <svg viewBox="0 0 140 85" class="gauge-svg">
+            <path d="M 16 75 A 54 54 0 0 1 124 75" fill="none" stroke="#252a38" stroke-width="11" stroke-linecap="round"/>
+            <path id="cockpitArcVoltage" d="M 16 75 A 54 54 0 0 1 124 75" fill="none" stroke="#10b981" stroke-width="11" stroke-dasharray="170" stroke-dashoffset="25" stroke-linecap="round"/>
+          </svg>
+        </div>
+      </div>
+
+      <!-- Center Industrial Turbine Power Dial With Sunburst Flare & Notched Ticks -->
+      <div class="cockpit-turbine-center">
+        <!-- Sunburst rays glow effect -->
+        <div class="cockpit-sunburst-flare"></div>
+        <div class="cockpit-turbine-dial" id="cockpitTurbineDial">
+          <!-- Circumferential notched ring of tick marks -->
+          <svg class="cockpit-ticks-svg" viewBox="0 0 160 160">
+            <circle cx="80" cy="80" r="72" fill="none" stroke="rgba(245, 158, 11, 0.25)" stroke-width="2"/>
+            <circle class="cockpit-ticks-circle" cx="80" cy="80" r="68" fill="none" stroke="#f59e0b" stroke-width="6" stroke-dasharray="2 7" stroke-linecap="butt"/>
+            <circle cx="80" cy="80" r="63" fill="none" stroke="#d97706" stroke-width="1.5"/>
+          </svg>
+          <button class="cockpit-dial-btn btn-power-toggle" aria-label="Master Power Control">
+            <svg class="cockpit-power-svg" viewBox="0 0 24 24">
+              <path d="M18.36 6.64a9 9 0 1 1-12.73 0"></path>
+              <line x1="12" y1="2" x2="12" y2="12"></line>
+            </svg>
+            <div class="cockpit-dial-label">POWER<br>CONTROL</div>
+          </button>
+        </div>
+      </div>
+
+      <!-- Gauge 3: Corrente (Valori in mA e Ampere SOPRA al v-meter) -->
+      <div class="cockpit-gauge-card">
+        <div class="cockpit-gauge-title">Corrente</div>
+        <div class="cockpit-gauge-val-box">
+          <div class="cockpit-gauge-num val-current-ma">0</div>
+          <div class="cockpit-gauge-unit">mA <span class="cockpit-amp-tag val-current-amp">0.000 A</span></div>
+        </div>
+        <div class="cockpit-semi-gauge">
+          <svg viewBox="0 0 140 85" class="gauge-svg">
+            <path d="M 16 75 A 54 54 0 0 1 124 75" fill="none" stroke="#252a38" stroke-width="11" stroke-linecap="round"/>
+            <path id="cockpitArcCurrent" d="M 16 75 A 54 54 0 0 1 124 75" fill="none" stroke="#f59e0b" stroke-width="11" stroke-dasharray="170" stroke-dashoffset="65" stroke-linecap="round"/>
+          </svg>
+        </div>
+      </div>
+
+      <!-- Gauge 4: Energia Oggi (Valori SOPRA al v-meter) -->
+      <div class="cockpit-gauge-card">
+        <div class="cockpit-gauge-title">Energia Oggi</div>
+        <div class="cockpit-gauge-val-box">
+          <div class="cockpit-gauge-num val-energy-today">0.00</div>
+          <div class="cockpit-gauge-unit">kWh</div>
+        </div>
+        <div class="cockpit-semi-gauge">
+          <svg viewBox="0 0 140 85" class="gauge-svg">
+            <path d="M 16 75 A 54 54 0 0 1 124 75" fill="none" stroke="#252a38" stroke-width="11" stroke-linecap="round"/>
+            <path id="cockpitArcEnergy" d="M 16 75 A 54 54 0 0 1 124 75" fill="none" stroke="#10b981" stroke-width="11" stroke-dasharray="170" stroke-dashoffset="35" stroke-linecap="round"/>
+          </svg>
+        </div>
+      </div>
+    </div>
+
+    <!-- Middle: Dynamic Waveform Oscilloscope Screen -->
+    <div class="cockpit-waveform-card">
+      <div class="cockpit-card-title">Dynamic Waveform</div>
+      <div class="cockpit-oscilloscope-screen">
+        <canvas id="cockpitOscilloscopeCanvas"></canvas>
+      </div>
+    </div>
+
+    <!-- Bottom: Monthly Energy Analytics Telemetry Bars + Month Selector -->
+    <div class="cockpit-analytics-card">
+      <div class="cockpit-card-title">
+        Monthly Energy Analytics — <span id="cockpitCurrentMonthYearDisplay" style="color: #10b981; font-weight: 800;">Settembre 2026</span>
+        <span style="font-size: 0.65rem; color: #6b7280; font-weight: normal; margin-left: auto;">(Usa rotellina mouse o frecce per scorrere i mesi)</span>
+      </div>
+      
+      <!-- Horizontal Telemetry Progress / Level Bars con valori REALI -->
+      <div class="cockpit-bars-stack">
+        <div class="cockpit-bar-row">
+          <span class="cockpit-bar-label">Total monthly consumption</span>
+          <div class="cockpit-bar-track"><div class="cockpit-bar-fill" id="cockpitBarTotal" style="width: 0%;"></div></div>
+          <span class="cockpit-bar-val" id="cockpitValTotal">0.0 kWh</span>
+        </div>
+        <div class="cockpit-bar-row">
+          <span class="cockpit-bar-label">Daily average load</span>
+          <div class="cockpit-bar-track"><div class="cockpit-bar-fill" id="cockpitBarDailyAvg" style="width: 0%;"></div></div>
+          <span class="cockpit-bar-val" id="cockpitValDailyAvg">0.00 kWh/d</span>
+        </div>
+        <div class="cockpit-bar-row">
+          <span class="cockpit-bar-label">Peak day consumption</span>
+          <div class="cockpit-bar-track"><div class="cockpit-bar-fill" id="cockpitBarPeak" style="width: 0%;"></div></div>
+          <span class="cockpit-bar-val" id="cockpitValPeak">0.00 kWh</span>
+        </div>
+        <div class="cockpit-bar-row">
+          <span class="cockpit-bar-label">Monthly quota efficiency</span>
+          <div class="cockpit-bar-track"><div class="cockpit-bar-fill" id="cockpitBarQuota" style="width: 0%;"></div></div>
+          <span class="cockpit-bar-val" id="cockpitValQuota">0%</span>
+        </div>
+      </div>
+
+      <!-- Month Navigation Buttons Bar -->
+      <div class="cockpit-months-bar">
+        <button class="cockpit-arrow-btn btn-month-prev" id="btnCockpitPrevMonth" title="Mese/Anno Precedente">‹</button>
+        <div class="cockpit-month-buttons-list" id="cockpitMonthButtonsList">
+          <!-- 12 Months rendered via JS -->
+        </div>
+        <button class="cockpit-arrow-btn btn-month-next" id="btnCockpitNextMonth" title="Mese/Anno Successivo">›</button>
+      </div>
+    </div>
+  </div>
+
+
+  <!-- =========================================================================
+       SETTINGS MODAL (Profili, Opzioni Windows, Tray & Gadget)
+       ========================================================================= -->
+  <div class="modal-backdrop" id="settingsModal">
+    <div class="modal-card">
+      <div class="modal-header">
+        <h3 class="modal-title">Configurazione Tapo P110 & Profili</h3>
+        <button class="btn-icon" id="btnCloseSettings">✕</button>
+      </div>
+      <div class="modal-body">
+        
+        <!-- 3 PULSANTI DI GESTIONE PROFILO (RICHIESTI DALL'UTENTE) -->
+        <div class="settings-profile-toolbar">
+          <button type="button" class="btn-profile-tool btn-reset-demo" id="btnResetDemo" title="Svuota tutti i campi e attiva la modalità dimostrativa">
+            <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <polyline points="3 6 5 6 21 6"></polyline>
+              <path d="M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6m3 0V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2"></path>
+            </svg>
+            <span>Svuota Campi & Abilita Demo</span>
+          </button>
+
+          <button type="button" class="btn-profile-tool btn-export-profile" id="btnExportProfile" title="Salva le credenziali e la cronologia consumi in un file settings.json">
+            <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path>
+              <polyline points="7 10 12 15 17 10"></polyline>
+              <line x1="12" y1="15" x2="12" y2="3"></line>
+            </svg>
+            <span>Salva Profilo</span>
+          </button>
+
+          <button type="button" class="btn-profile-tool btn-import-profile" id="btnImportProfile" title="Carica un file settings.json e ripristina credenziali e cronologia">
+            <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path>
+              <polyline points="17 8 12 3 7 8"></polyline>
+              <line x1="12" y1="3" x2="12" y2="15"></line>
+            </svg>
+            <span>Carica Profilo</span>
+          </button>
+          <!-- Hidden file input for loading profile from any folder on PC -->
+          <input type="file" id="fileProfileInput" accept=".json" style="display: none;">
+        </div>
+
+        <div class="settings-divider"></div>
+
+        <div class="form-group">
+          <label>Indirizzo IP Presa Tapo (nella tua rete locale)</label>
+          <input type="text" id="inputIp" class="form-control" placeholder="Es. 192.168.1.100">
+        </div>
+        <div class="form-group">
+          <label>Email Account TP-Link / Tapo</label>
+          <input type="email" id="inputEmail" class="form-control" placeholder="es. nome@dominio.com">
+        </div>
+        <div class="form-group">
+          <label>Password Account Tapo</label>
+          <input type="password" id="inputPassword" class="form-control" placeholder="Inserisci password">
+        </div>
+        <div class="form-group">
+          <label>Nome Personalizzato Dispositivo</label>
+          <input type="text" id="inputDeviceName" class="form-control" placeholder="Tapo P110">
+        </div>
+        <div class="form-group">
+          <label class="checkbox-row">
+            <input type="checkbox" id="checkDemoMode">
+            <span>Modalità Simulazione / Demo (Disattivata quando si carica un profilo)</span>
+          </label>
+        </div>
+
+        <div class="settings-divider"></div>
+
+        <!-- OPZIONI AGGIUNTIVE: Figura 4 & Gadget Desktop -->
+        <div class="settings-options-section">
+          <div class="settings-options-title">Integrazione Sistema & Tray</div>
+          <div class="settings-options-grid">
+            <label class="modern-checkbox-row">
+              <input type="checkbox" id="checkMinimizeTray">
+              <span class="custom-checkbox-box"></span>
+              <span class="checkbox-label-text">Minimizza in tray invece di chiudere</span>
+            </label>
+            <label class="modern-checkbox-row">
+              <input type="checkbox" id="checkMinimizeStart">
+              <span class="custom-checkbox-box"></span>
+              <span class="checkbox-label-text">Minimizza all'avvio</span>
+            </label>
+            <label class="modern-checkbox-row">
+              <input type="checkbox" id="checkStartWindows">
+              <span class="custom-checkbox-box"></span>
+              <span class="checkbox-label-text">Avvia con Windows</span>
+            </label>
+            <label class="modern-checkbox-row">
+              <input type="checkbox" id="checkShowGadget">
+              <span class="custom-checkbox-box"></span>
+              <span class="checkbox-label-text">Mostra Gadget Desktop compatto (Pulsante & Assorbimenti)</span>
+            </label>
+          </div>
+        </div>
+
+        <div class="settings-info-alert">
+          <strong>ℹ️ Requisito App Tapo:</strong><br>
+          Assicurati che nell'app Tapo sullo smartphone (scheda <strong>"Io" &gt; "Servizi di terze parti"</strong>) sia attivata la voce <strong>"Compatibilità con terze parti"</strong>.
+        </div>
+      </div>
+      <div class="modal-footer">
+        <button class="btn-secondary" id="btnCancelSettings">Annulla</button>
+        <button class="btn-primary" id="btnSaveSettings">Salva e Connetti</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Notification Toast -->
+  <div id="appToast" class="app-toast"></div>
+
+  <!-- Scripts -->
+  <script src="/static/js/app.js"></script>
+</body>
+</html>
