@@ -27,7 +27,7 @@ def check_requirements():
     
     # 1. Termina eventuali processi precedenti attivi che bloccano i file in dist/
     try:
-        subprocess.run(["powershell", "-Command", "Stop-Process -Name 'Tapo P110 Control Center' -Force -ErrorAction SilentlyContinue"], capture_output=True)
+        subprocess.run(["powershell", "-Command", "Get-Process | Where-Object { $_.ProcessName -like '*Tapo P110*' } | Stop-Process -Force -ErrorAction SilentlyContinue"], capture_output=True)
     except Exception:
         pass
     

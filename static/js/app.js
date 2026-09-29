@@ -814,7 +814,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
   async function loadSettingsIntoModal() {
     try {
-      const cfg = await fetch("/api/settings").then(r => r.json());
+      const cfg = await fetch(`/api/settings?_t=${Date.now()}`, { cache: "no-store" }).then(r => r.json());
       inputIp.value = cfg.ip || "";
       inputEmail.value = cfg.email || "";
       inputPassword.value = cfg.password_set ? "******" : "";
@@ -918,7 +918,7 @@ document.addEventListener("DOMContentLoaded", () => {
           // 1. Popola SUBITO tutti i campi del modal con i dati caricati!
           inputIp.value = res.config.ip || "";
           inputEmail.value = res.config.email || "";
-          inputPassword.value = res.config.password || "";
+          inputPassword.value = res.config.password ? "******" : "";
           inputDeviceName.value = res.config.device_name || "Tapo P110";
           
           // REQUISITO CRITICO: quando si richiama il file la modalità demo deve essere disattivata!
@@ -948,9 +948,7 @@ document.addEventListener("DOMContentLoaded", () => {
           // 5. Ricarica la cronologia consumi dal DB appena aggiornato
           await loadHistory();
 
-          // 6. Chiudi subito il modal delle impostazioni così l'utente vede subito le modifiche!
-          settingsModal.classList.remove("open");
-
+          // Lasciamo il modal aperto così l'utente vede direttamente i campi compilati!
           showToast(`Profilo "${res.filename}" caricato con successo!`);
           return;
         } else if (res && res.cancelled) {
@@ -982,7 +980,7 @@ document.addEventListener("DOMContentLoaded", () => {
             if (res && res.success && res.config) {
               inputIp.value = res.config.ip || "";
               inputEmail.value = res.config.email || "";
-              inputPassword.value = res.config.password || "";
+              inputPassword.value = res.config.password ? "******" : "";
               inputDeviceName.value = res.config.device_name || "Tapo P110";
               checkDemoMode.checked = false;
 
@@ -1005,7 +1003,6 @@ document.addEventListener("DOMContentLoaded", () => {
               }
 
               await loadHistory();
-              settingsModal.classList.remove("open");
               showToast(`Profilo "${file.name}" caricato con successo!`);
             } else {
               alert("Errore durante il caricamento del profilo.");

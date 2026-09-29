@@ -236,7 +236,10 @@ async def get_settings():
         safe_cfg["password"] = "******"
     else:
         safe_cfg["password_set"] = False
-    return safe_cfg
+    return JSONResponse(
+        content=safe_cfg,
+        headers={"Cache-Control": "no-store, no-cache, must-revalidate"}
+    )
 
 @app.post("/api/settings")
 async def update_settings(req: SettingsRequest):

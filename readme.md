@@ -1,4 +1,4 @@
-# ⚡ Tapo P110 Control Center — Windows 11 WebApp & Desktop
+# ⚡ Tapo P110 Control Center per Windows 10/11
 
 <div align="center">
 
@@ -7,9 +7,9 @@
 ![Platform](https://img.shields.io/badge/Platform-Windows%2011-0078D4?logo=windows-11&logoColor=white)
 ![Device](https://img.shields.io/badge/Hardware-TP--Link%20Tapo%20P110-00C4B4)
 ![License](https://img.shields.io/badge/License-GPLv3-green.svg)
-![Status](https://img.shields.io/badge/Release-v1.0.24-orange)
+![Status](https://img.shields.io/badge/Release-v1.0.26-orange)
 
-**Un'applicazione moderna, reattiva e autonoma per Windows 11 per monitorare e controllare la presa domotica intelligente TP-Link Tapo P110.**
+**Un'applicazione moderna, reattiva e autonoma per Windows 10/11 per monitorare e controllare la presa domotica intelligente TP-Link Tapo P110.**
 
 [Funzionalità](#-funzionalità-principali) • [Temi Grafici](#-temi-grafici-intercambiabili) • [Installazione & Avvio](#-installazione--avvio) • [Generazione .EXE](#-generazione-file-exe) • [Licenza & Autore](#-licenza--copyright)
 
@@ -165,7 +165,7 @@ Lo script configurerà automaticamente l'ambiente virtuale `.venv` (se non prese
 
 ## 📦 Generazione File .EXE
 
-Per creare un file `.exe` standalone per Windows 11 pronto per la distribuzione:
+Per creare un file `.exe` standalone per Windows 10/11 pronto per la distribuzione:
 1. Esegui lo script:
    ```powershell
    .\.venv\Scripts\python.exe GeneraExe.py
