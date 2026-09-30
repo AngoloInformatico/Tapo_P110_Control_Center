@@ -7,7 +7,7 @@
 ![Platform](https://img.shields.io/badge/Platform-Windows%2011-0078D4?logo=windows-11&logoColor=white)
 ![Device](https://img.shields.io/badge/Hardware-TP--Link%20Tapo%20P110-00C4B4)
 ![License](https://img.shields.io/badge/License-GPLv3-green.svg)
-![Status](https://img.shields.io/badge/Release-v1.0.26-orange)
+![Status](https://img.shields.io/badge/Release-v1.0.27-orange)
 
 **Un'applicazione moderna, reattiva e autonoma per Windows 10/11 per monitorare e controllare la presa domotica intelligente TP-Link Tapo P110.**
 

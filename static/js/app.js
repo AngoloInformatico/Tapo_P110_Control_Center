@@ -106,6 +106,51 @@ document.addEventListener("DOMContentLoaded", () => {
   });
 
   // ---------------------------------------------------------------------------
+  // Dashboard Navigation Tabs Switcher (Presa Tapo P110 / Licenza & Copyright)
+  // ---------------------------------------------------------------------------
+  const dashNavTabs = document.querySelectorAll(".dash-nav-tab");
+  let activeDashboardTab = "tapo";
+
+  function switchDashboardTab(target) {
+    activeDashboardTab = target;
+    document.querySelectorAll(".dash-nav-tab").forEach(tab => {
+      tab.classList.toggle("active", tab.dataset.target === target);
+    });
+    document.querySelectorAll(".tapo-dashboard-view").forEach(el => {
+      el.classList.toggle("active", target === "tapo");
+      el.classList.toggle("hidden", target !== "tapo");
+    });
+    document.querySelectorAll(".copyright-dashboard-panel").forEach(el => {
+      el.classList.toggle("active", target === "copyright");
+    });
+  }
+
+  dashNavTabs.forEach(tab => {
+    tab.addEventListener("click", () => {
+      switchDashboardTab(tab.dataset.target);
+    });
+  });
+
+  // Listener per apertura link esterni (YouTube, GitHub, Repository, Licenza)
+  document.addEventListener("click", async (e) => {
+    const btn = e.target.closest(".btn-open-ext-link");
+    if (!btn) return;
+    e.preventDefault();
+    const url = btn.dataset.url;
+    if (!url) return;
+    try {
+      await fetch("/api/open-external-url", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ url })
+      });
+    } catch (err) {
+      window.open(url, "_blank");
+    }
+  });
+
+
+  // ---------------------------------------------------------------------------
   // 3. UI Update Engine (Binds State Across All 3 Views)
   // ---------------------------------------------------------------------------
   function updateUI(state) {

@@ -33,6 +33,18 @@
       </div>
 
       <div class="cyber-header-right">
+        <!-- Dashboard Scheda Switcher: Presa Tapo vs Licenza & Copyright -->
+        <div class="dashboard-nav-tabs">
+          <button type="button" class="dash-nav-tab active" data-target="tapo">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18.36 6.64a9 9 0 1 1-12.73 0"></path><line x1="12" y1="2" x2="12" y2="12"></line></svg>
+            <span>Presa Tapo</span>
+          </button>
+          <button type="button" class="dash-nav-tab" data-target="copyright">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"></circle><path d="M14.83 9.17a4 4 0 1 0 0 5.66"></path></svg>
+            <span>Licenza &amp; Copyright</span>
+          </button>
+        </div>
+
         <!-- Theme Switcher -->
         <div class="theme-pill-select">
           <span>Tema:</span>
@@ -73,7 +85,9 @@
 
     <!-- Main Dashboard Container -->
     <div class="cyber-main-body">
-      <!-- Top Control Row: 2 Cards Left, Center Big Power Knob, 2 Cards Right -->
+      <!-- SCHEDA 1: PRESA TAPO P110 CONTROLLI & GRAFICI -->
+      <div class="tapo-dashboard-view active">
+        <!-- Top Control Row: 2 Cards Left, Center Big Power Knob, 2 Cards Right -->
       <section class="cyber-hero-row">
         <!-- Left 2 Cards Stacked -->
         <div class="cyber-metric-stack">
@@ -169,6 +183,161 @@
           </button>
         </div>
       </section>
+      </div>
+
+      <!-- SCHEDA 2: LICENZA & COPYRIGHT (DA README.MD) -->
+<div class="copyright-dashboard-panel" id="cyberCopyrightPanel">
+        <!-- Top Hero Banner Card -->
+        <div class="copyright-hero-card">
+          <div class="copyright-hero-info">
+            <div class="copyright-hero-badge">
+              <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <circle cx="12" cy="12" r="10"></circle>
+                <path d="M14.83 9.17a4 4 0 1 0 0 5.66"></path>
+              </svg>
+            </div>
+            <div>
+              <div class="copyright-hero-title">Tapo P110 Control Center</div>
+              <div class="copyright-hero-sub">
+                <span>Created by <strong>Alex Lignola</strong></span> • 
+                <span>&copy; 2026 All rights reserved</span> • 
+                <span class="copyright-badge-tag tag-gpl">GNU GPL v3.0</span>
+                <span class="copyright-badge-tag">Open Source</span>
+              </div>
+            </div>
+          </div>
+          <div class="copyright-hero-actions">
+            <button type="button" class="btn-social-action btn-social-yt btn-open-ext-link" data-url="https://www.youtube.com/@AngoloInformatico" title="Canale YouTube Ufficiale">
+              <svg width="17" height="17" viewBox="0 0 24 24" fill="currentColor">
+                <path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/>
+              </svg>
+              <span>YouTube: Angolo Informatico</span>
+            </button>
+            <button type="button" class="btn-social-action btn-social-gh btn-open-ext-link" data-url="https://github.com/AngoloInformatico" title="Profilo GitHub">
+              <svg width="17" height="17" viewBox="0 0 24 24" fill="currentColor">
+                <path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0 0 24 12c0-6.63-5.37-12-12-12z"/>
+              </svg>
+              <span>GitHub: AngoloInformatico</span>
+            </button>
+            <button type="button" class="btn-social-action btn-social-repo btn-open-ext-link" data-url="https://github.com/AngoloInformatico?tab=repositories" title="Tutti i Repository">
+              <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <path d="M22 19a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h5l2 3h9a2 2 0 0 1 2 2z"></path>
+              </svg>
+              <span>Tutti i Repository</span>
+            </button>
+          </div>
+        </div>
+
+        <!-- Cards Grid con dettagli completi dal Readme.md -->
+        <div class="copyright-cards-grid">
+          <!-- Card 1: Licenza Ufficiale -->
+          <div class="copyright-card-item accent-green">
+            <div class="copyright-card-header">
+              <div class="copyright-card-icon" style="background: rgba(16, 185, 129, 0.15); color: #10b981;">📄</div>
+              <div>
+                <div class="copyright-card-label">LICENZA SOFTWARE &amp; DIRITTI</div>
+                <div class="copyright-card-title">GNU GPL v3.0</div>
+              </div>
+            </div>
+            <div class="copyright-card-text">
+              Rilasciato sotto licenza <strong>GNU General Public License v3.0</strong>. Sei libero di eseguire, studiare, condividere e migliorare questo software nel pieno rispetto dei principi del software libero.
+            </div>
+            <div class="copyright-license-box">
+              Created by Alex Lignola - &copy; 2026 Tapo P110 Control Center - All rights reserved.
+            </div>
+            <div class="copyright-card-footer">
+              <button type="button" class="btn-zima-action btn-zima-web btn-open-ext-link" data-url="https://www.gnu.org/licenses/gpl-3.0.html">
+                <span>Consulta Testo Licenza GPL v3</span>
+              </button>
+            </div>
+          </div>
+
+          <!-- Card 2: Autore & Community -->
+          <div class="copyright-card-item accent-cyan">
+            <div class="copyright-card-header">
+              <div class="copyright-card-icon" style="background: rgba(56, 189, 248, 0.15); color: #38bdf8;">👤</div>
+              <div>
+                <div class="copyright-card-label">SVILUPPATORE &amp; AUTORE</div>
+                <div class="copyright-card-title">Alex Lignola</div>
+              </div>
+            </div>
+            <div class="copyright-card-text">
+              Progetto ideato e sviluppato da <strong>Alex Lignola (Angolo Informatico)</strong>. Condiviso pubblicamente per la community domotica italiana e per tutti gli appassionati di home automation e fai-da-te tecnologico.
+            </div>
+            <div class="copyright-card-footer">
+              <button type="button" class="btn-zima-action btn-zima-web btn-open-ext-link" data-url="https://www.youtube.com/@AngoloInformatico">
+                <span>Guarda i Video su YouTube</span>
+              </button>
+            </div>
+          </div>
+
+          <!-- Card 3: Canale YouTube Angolo Informatico -->
+          <div class="copyright-card-item accent-red">
+            <div class="copyright-card-header">
+              <div class="copyright-card-icon" style="background: rgba(239, 68, 68, 0.15); color: #ef4444;">📺</div>
+              <div>
+                <div class="copyright-card-label">CANALE YOUTUBE</div>
+                <div class="copyright-card-title">Angolo Informatico</div>
+              </div>
+            </div>
+            <div class="copyright-card-text">
+              Video tutorial, progetti Python, guide su server Linux, ZimaOS, Docker, Home Assistant, domotica e recensioni di dispositivi smart. Iscriviti per non perdere i prossimi rilasci!
+            </div>
+            <div class="copyright-card-footer">
+              <button type="button" class="btn-zima-action btn-zima-shutdown btn-open-ext-link" data-url="https://www.youtube.com/@AngoloInformatico">
+                <span>Visita @AngoloInformatico</span>
+              </button>
+            </div>
+          </div>
+
+          <!-- Card 4: Progetti GitHub -->
+          <div class="copyright-card-item accent-purple">
+            <div class="copyright-card-header">
+              <div class="copyright-card-icon" style="background: rgba(192, 132, 252, 0.15); color: #c084fc;">🐙</div>
+              <div>
+                <div class="copyright-card-label">GITHUB REPOSITORIES</div>
+                <div class="copyright-card-title">@AngoloInformatico</div>
+              </div>
+            </div>
+            <div class="copyright-card-text">
+              Esplora tutti i repository ufficiali, gli script open-source, i sorgenti completi delle applicazioni e partecipa allo sviluppo segnalando issue o miglioramenti.
+            </div>
+            <div class="copyright-card-footer">
+              <button type="button" class="btn-zima-action btn-zima-reboot btn-open-ext-link" data-url="https://github.com/AngoloInformatico?tab=repositories">
+                <span>Esplora Repository</span>
+              </button>
+            </div>
+          </div>
+
+          <!-- Card 5: Stack Tecnologico -->
+          <div class="copyright-card-item accent-amber">
+            <div class="copyright-card-header">
+              <div class="copyright-card-icon" style="background: rgba(251, 191, 36, 0.15); color: #fbbf24;">⚡</div>
+              <div>
+                <div class="copyright-card-label">ARCHITETTURA &amp; MODULI</div>
+                <div class="copyright-card-title">Stack Tecnologico</div>
+              </div>
+            </div>
+            <div class="copyright-card-text">
+              Realizzato in <strong>Python 3.11+</strong>, backend reattivo asincrono con <strong>FastAPI</strong> &amp; <strong>Uvicorn</strong>, interfaccia desktop con <strong>PyWebView</strong> (Edge WebView2), grafici con <strong>Chart.js</strong> e connettori con <strong>python-kasa</strong>, <strong>tapo SDK</strong> e <strong>PyP100</strong>.
+            </div>
+          </div>
+
+          <!-- Card 6: Funzionalità e Integrazione -->
+          <div class="copyright-card-item accent-cyan">
+            <div class="copyright-card-header">
+              <div class="copyright-card-icon" style="background: rgba(56, 189, 248, 0.15); color: #38bdf8;">🛡️</div>
+              <div>
+                <div class="copyright-card-label">CARATTERISTICHE CHIAVE</div>
+                <div class="copyright-card-title">Controllo &amp; Monitoraggio</div>
+              </div>
+            </div>
+            <div class="copyright-card-text">
+              Include monitoraggio consumi (W, V, mA, kWh), gestione 3 temi dinamici, desktop widget compatto, profilo persistente su file e System Tray per Windows 11.
+            </div>
+          </div>
+        </div>
+      </div>
     </div>
   </div>
 
@@ -245,6 +414,18 @@
         </div>
 
         <div class="fluent-top-actions">
+          <!-- Dashboard Scheda Switcher: Presa Tapo vs Licenza & Copyright -->
+          <div class="dashboard-nav-tabs">
+            <button type="button" class="dash-nav-tab active" data-target="tapo">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18.36 6.64a9 9 0 1 1-12.73 0"></path><line x1="12" y1="2" x2="12" y2="12"></line></svg>
+            <span>Presa Tapo</span>
+            </button>
+            <button type="button" class="dash-nav-tab" data-target="copyright">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"></circle><path d="M14.83 9.17a4 4 0 1 0 0 5.66"></path></svg>
+            <span>Licenza &amp; Copyright</span>
+            </button>
+          </div>
+
           <!-- Theme Switcher -->
           <div class="fluent-theme-select-box">
             <select class="select-theme-dropdown" data-role="theme-selector">
@@ -264,7 +445,9 @@
         </div>
       </header>
 
-      <!-- Row 1: 4 Horizontal Compact Cards Side-By-Side -->
+      <!-- SCHEDA 1: PRESA TAPO P110 FLUENT -->
+      <div class="tapo-dashboard-view active">
+        <!-- Row 1: 4 Horizontal Compact Cards Side-By-Side -->
       <div class="fluent-cards-row">
         <!-- Potenza Attiva con Micro Sparkline -->
         <div class="fluent-card fluent-card-power">
@@ -364,6 +547,161 @@
           <canvas id="fluentMonthlyChartCanvas"></canvas>
         </div>
       </div>
+      </div>
+
+      <!-- SCHEDA 2: LICENZA & COPYRIGHT (DA README.MD) -->
+<div class="copyright-dashboard-panel" id="fluentCopyrightPanel">
+        <!-- Top Hero Banner Card -->
+        <div class="copyright-hero-card">
+          <div class="copyright-hero-info">
+            <div class="copyright-hero-badge">
+              <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <circle cx="12" cy="12" r="10"></circle>
+                <path d="M14.83 9.17a4 4 0 1 0 0 5.66"></path>
+              </svg>
+            </div>
+            <div>
+              <div class="copyright-hero-title">Tapo P110 Control Center</div>
+              <div class="copyright-hero-sub">
+                <span>Created by <strong>Alex Lignola</strong></span> • 
+                <span>&copy; 2026 All rights reserved</span> • 
+                <span class="copyright-badge-tag tag-gpl">GNU GPL v3.0</span>
+                <span class="copyright-badge-tag">Open Source</span>
+              </div>
+            </div>
+          </div>
+          <div class="copyright-hero-actions">
+            <button type="button" class="btn-social-action btn-social-yt btn-open-ext-link" data-url="https://www.youtube.com/@AngoloInformatico" title="Canale YouTube Ufficiale">
+              <svg width="17" height="17" viewBox="0 0 24 24" fill="currentColor">
+                <path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/>
+              </svg>
+              <span>YouTube: Angolo Informatico</span>
+            </button>
+            <button type="button" class="btn-social-action btn-social-gh btn-open-ext-link" data-url="https://github.com/AngoloInformatico" title="Profilo GitHub">
+              <svg width="17" height="17" viewBox="0 0 24 24" fill="currentColor">
+                <path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0 0 24 12c0-6.63-5.37-12-12-12z"/>
+              </svg>
+              <span>GitHub: AngoloInformatico</span>
+            </button>
+            <button type="button" class="btn-social-action btn-social-repo btn-open-ext-link" data-url="https://github.com/AngoloInformatico?tab=repositories" title="Tutti i Repository">
+              <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <path d="M22 19a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h5l2 3h9a2 2 0 0 1 2 2z"></path>
+              </svg>
+              <span>Tutti i Repository</span>
+            </button>
+          </div>
+        </div>
+
+        <!-- Cards Grid con dettagli completi dal Readme.md -->
+        <div class="copyright-cards-grid">
+          <!-- Card 1: Licenza Ufficiale -->
+          <div class="copyright-card-item accent-green">
+            <div class="copyright-card-header">
+              <div class="copyright-card-icon" style="background: rgba(16, 185, 129, 0.15); color: #10b981;">📄</div>
+              <div>
+                <div class="copyright-card-label">LICENZA SOFTWARE &amp; DIRITTI</div>
+                <div class="copyright-card-title">GNU GPL v3.0</div>
+              </div>
+            </div>
+            <div class="copyright-card-text">
+              Rilasciato sotto licenza <strong>GNU General Public License v3.0</strong>. Sei libero di eseguire, studiare, condividere e migliorare questo software nel pieno rispetto dei principi del software libero.
+            </div>
+            <div class="copyright-license-box">
+              Created by Alex Lignola - &copy; 2026 Tapo P110 Control Center - All rights reserved.
+            </div>
+            <div class="copyright-card-footer">
+              <button type="button" class="btn-zima-action btn-zima-web btn-open-ext-link" data-url="https://www.gnu.org/licenses/gpl-3.0.html">
+                <span>Consulta Testo Licenza GPL v3</span>
+              </button>
+            </div>
+          </div>
+
+          <!-- Card 2: Autore & Community -->
+          <div class="copyright-card-item accent-cyan">
+            <div class="copyright-card-header">
+              <div class="copyright-card-icon" style="background: rgba(56, 189, 248, 0.15); color: #38bdf8;">👤</div>
+              <div>
+                <div class="copyright-card-label">SVILUPPATORE &amp; AUTORE</div>
+                <div class="copyright-card-title">Alex Lignola</div>
+              </div>
+            </div>
+            <div class="copyright-card-text">
+              Progetto ideato e sviluppato da <strong>Alex Lignola (Angolo Informatico)</strong>. Condiviso pubblicamente per la community domotica italiana e per tutti gli appassionati di home automation e fai-da-te tecnologico.
+            </div>
+            <div class="copyright-card-footer">
+              <button type="button" class="btn-zima-action btn-zima-web btn-open-ext-link" data-url="https://www.youtube.com/@AngoloInformatico">
+                <span>Guarda i Video su YouTube</span>
+              </button>
+            </div>
+          </div>
+
+          <!-- Card 3: Canale YouTube Angolo Informatico -->
+          <div class="copyright-card-item accent-red">
+            <div class="copyright-card-header">
+              <div class="copyright-card-icon" style="background: rgba(239, 68, 68, 0.15); color: #ef4444;">📺</div>
+              <div>
+                <div class="copyright-card-label">CANALE YOUTUBE</div>
+                <div class="copyright-card-title">Angolo Informatico</div>
+              </div>
+            </div>
+            <div class="copyright-card-text">
+              Video tutorial, progetti Python, guide su server Linux, ZimaOS, Docker, Home Assistant, domotica e recensioni di dispositivi smart. Iscriviti per non perdere i prossimi rilasci!
+            </div>
+            <div class="copyright-card-footer">
+              <button type="button" class="btn-zima-action btn-zima-shutdown btn-open-ext-link" data-url="https://www.youtube.com/@AngoloInformatico">
+                <span>Visita @AngoloInformatico</span>
+              </button>
+            </div>
+          </div>
+
+          <!-- Card 4: Progetti GitHub -->
+          <div class="copyright-card-item accent-purple">
+            <div class="copyright-card-header">
+              <div class="copyright-card-icon" style="background: rgba(192, 132, 252, 0.15); color: #c084fc;">🐙</div>
+              <div>
+                <div class="copyright-card-label">GITHUB REPOSITORIES</div>
+                <div class="copyright-card-title">@AngoloInformatico</div>
+              </div>
+            </div>
+            <div class="copyright-card-text">
+              Esplora tutti i repository ufficiali, gli script open-source, i sorgenti completi delle applicazioni e partecipa allo sviluppo segnalando issue o miglioramenti.
+            </div>
+            <div class="copyright-card-footer">
+              <button type="button" class="btn-zima-action btn-zima-reboot btn-open-ext-link" data-url="https://github.com/AngoloInformatico?tab=repositories">
+                <span>Esplora Repository</span>
+              </button>
+            </div>
+          </div>
+
+          <!-- Card 5: Stack Tecnologico -->
+          <div class="copyright-card-item accent-amber">
+            <div class="copyright-card-header">
+              <div class="copyright-card-icon" style="background: rgba(251, 191, 36, 0.15); color: #fbbf24;">⚡</div>
+              <div>
+                <div class="copyright-card-label">ARCHITETTURA &amp; MODULI</div>
+                <div class="copyright-card-title">Stack Tecnologico</div>
+              </div>
+            </div>
+            <div class="copyright-card-text">
+              Realizzato in <strong>Python 3.11+</strong>, backend reattivo asincrono con <strong>FastAPI</strong> &amp; <strong>Uvicorn</strong>, interfaccia desktop con <strong>PyWebView</strong> (Edge WebView2), grafici con <strong>Chart.js</strong> e connettori con <strong>python-kasa</strong>, <strong>tapo SDK</strong> e <strong>PyP100</strong>.
+            </div>
+          </div>
+
+          <!-- Card 6: Funzionalità e Integrazione -->
+          <div class="copyright-card-item accent-cyan">
+            <div class="copyright-card-header">
+              <div class="copyright-card-icon" style="background: rgba(56, 189, 248, 0.15); color: #38bdf8;">🛡️</div>
+              <div>
+                <div class="copyright-card-label">CARATTERISTICHE CHIAVE</div>
+                <div class="copyright-card-title">Controllo &amp; Monitoraggio</div>
+              </div>
+            </div>
+            <div class="copyright-card-text">
+              Include monitoraggio consumi (W, V, mA, kWh), gestione 3 temi dinamici, desktop widget compatto, profilo persistente su file e System Tray per Windows 11.
+            </div>
+          </div>
+        </div>
+      </div>
     </section>
   </div>
 
@@ -381,6 +719,18 @@
       </div>
 
       <div class="cockpit-header-right">
+        <!-- Dashboard Scheda Switcher: Presa Tapo vs Licenza & Copyright -->
+        <div class="dashboard-nav-tabs">
+          <button type="button" class="dash-nav-tab active" data-target="tapo">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18.36 6.64a9 9 0 1 1-12.73 0"></path><line x1="12" y1="2" x2="12" y2="12"></line></svg>
+            <span>Presa Tapo</span>
+          </button>
+          <button type="button" class="dash-nav-tab" data-target="copyright">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"></circle><path d="M14.83 9.17a4 4 0 1 0 0 5.66"></path></svg>
+            <span>Licenza &amp; Copyright</span>
+          </button>
+        </div>
+
         <div class="cockpit-select-box">
           <span class="cockpit-label">THEME:</span>
           <select class="select-theme-dropdown" data-role="theme-selector">
@@ -396,6 +746,8 @@
       </div>
     </header>
 
+    <!-- SCHEDA 1: PRESA TAPO P110 COCKPIT -->
+    <div class="tapo-dashboard-view active">
     <!-- Top Row: Radial Semi-Circular Gauges + Center Turbine Power Dial -->
     <div class="cockpit-gauges-row">
       <!-- Gauge 1: Potenza Attiva (Valori SOPRA al v-meter) -->
@@ -528,6 +880,161 @@
         <button class="cockpit-arrow-btn btn-month-next" id="btnCockpitNextMonth" title="Mese/Anno Successivo">›</button>
       </div>
     </div>
+    </div>
+
+    <!-- SCHEDA 2: LICENZA & COPYRIGHT (DA README.MD) -->
+<div class="copyright-dashboard-panel" id="cockpitCopyrightPanel">
+        <!-- Top Hero Banner Card -->
+        <div class="copyright-hero-card">
+          <div class="copyright-hero-info">
+            <div class="copyright-hero-badge">
+              <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <circle cx="12" cy="12" r="10"></circle>
+                <path d="M14.83 9.17a4 4 0 1 0 0 5.66"></path>
+              </svg>
+            </div>
+            <div>
+              <div class="copyright-hero-title">Tapo P110 Control Center</div>
+              <div class="copyright-hero-sub">
+                <span>Created by <strong>Alex Lignola</strong></span> • 
+                <span>&copy; 2026 All rights reserved</span> • 
+                <span class="copyright-badge-tag tag-gpl">GNU GPL v3.0</span>
+                <span class="copyright-badge-tag">Open Source</span>
+              </div>
+            </div>
+          </div>
+          <div class="copyright-hero-actions">
+            <button type="button" class="btn-social-action btn-social-yt btn-open-ext-link" data-url="https://www.youtube.com/@AngoloInformatico" title="Canale YouTube Ufficiale">
+              <svg width="17" height="17" viewBox="0 0 24 24" fill="currentColor">
+                <path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/>
+              </svg>
+              <span>YouTube: Angolo Informatico</span>
+            </button>
+            <button type="button" class="btn-social-action btn-social-gh btn-open-ext-link" data-url="https://github.com/AngoloInformatico" title="Profilo GitHub">
+              <svg width="17" height="17" viewBox="0 0 24 24" fill="currentColor">
+                <path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0 0 24 12c0-6.63-5.37-12-12-12z"/>
+              </svg>
+              <span>GitHub: AngoloInformatico</span>
+            </button>
+            <button type="button" class="btn-social-action btn-social-repo btn-open-ext-link" data-url="https://github.com/AngoloInformatico?tab=repositories" title="Tutti i Repository">
+              <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <path d="M22 19a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h5l2 3h9a2 2 0 0 1 2 2z"></path>
+              </svg>
+              <span>Tutti i Repository</span>
+            </button>
+          </div>
+        </div>
+
+        <!-- Cards Grid con dettagli completi dal Readme.md -->
+        <div class="copyright-cards-grid">
+          <!-- Card 1: Licenza Ufficiale -->
+          <div class="copyright-card-item accent-green">
+            <div class="copyright-card-header">
+              <div class="copyright-card-icon" style="background: rgba(16, 185, 129, 0.15); color: #10b981;">📄</div>
+              <div>
+                <div class="copyright-card-label">LICENZA SOFTWARE &amp; DIRITTI</div>
+                <div class="copyright-card-title">GNU GPL v3.0</div>
+              </div>
+            </div>
+            <div class="copyright-card-text">
+              Rilasciato sotto licenza <strong>GNU General Public License v3.0</strong>. Sei libero di eseguire, studiare, condividere e migliorare questo software nel pieno rispetto dei principi del software libero.
+            </div>
+            <div class="copyright-license-box">
+              Created by Alex Lignola - &copy; 2026 Tapo P110 Control Center - All rights reserved.
+            </div>
+            <div class="copyright-card-footer">
+              <button type="button" class="btn-zima-action btn-zima-web btn-open-ext-link" data-url="https://www.gnu.org/licenses/gpl-3.0.html">
+                <span>Consulta Testo Licenza GPL v3</span>
+              </button>
+            </div>
+          </div>
+
+          <!-- Card 2: Autore & Community -->
+          <div class="copyright-card-item accent-cyan">
+            <div class="copyright-card-header">
+              <div class="copyright-card-icon" style="background: rgba(56, 189, 248, 0.15); color: #38bdf8;">👤</div>
+              <div>
+                <div class="copyright-card-label">SVILUPPATORE &amp; AUTORE</div>
+                <div class="copyright-card-title">Alex Lignola</div>
+              </div>
+            </div>
+            <div class="copyright-card-text">
+              Progetto ideato e sviluppato da <strong>Alex Lignola (Angolo Informatico)</strong>. Condiviso pubblicamente per la community domotica italiana e per tutti gli appassionati di home automation e fai-da-te tecnologico.
+            </div>
+            <div class="copyright-card-footer">
+              <button type="button" class="btn-zima-action btn-zima-web btn-open-ext-link" data-url="https://www.youtube.com/@AngoloInformatico">
+                <span>Guarda i Video su YouTube</span>
+              </button>
+            </div>
+          </div>
+
+          <!-- Card 3: Canale YouTube Angolo Informatico -->
+          <div class="copyright-card-item accent-red">
+            <div class="copyright-card-header">
+              <div class="copyright-card-icon" style="background: rgba(239, 68, 68, 0.15); color: #ef4444;">📺</div>
+              <div>
+                <div class="copyright-card-label">CANALE YOUTUBE</div>
+                <div class="copyright-card-title">Angolo Informatico</div>
+              </div>
+            </div>
+            <div class="copyright-card-text">
+              Video tutorial, progetti Python, guide su server Linux, ZimaOS, Docker, Home Assistant, domotica e recensioni di dispositivi smart. Iscriviti per non perdere i prossimi rilasci!
+            </div>
+            <div class="copyright-card-footer">
+              <button type="button" class="btn-zima-action btn-zima-shutdown btn-open-ext-link" data-url="https://www.youtube.com/@AngoloInformatico">
+                <span>Visita @AngoloInformatico</span>
+              </button>
+            </div>
+          </div>
+
+          <!-- Card 4: Progetti GitHub -->
+          <div class="copyright-card-item accent-purple">
+            <div class="copyright-card-header">
+              <div class="copyright-card-icon" style="background: rgba(192, 132, 252, 0.15); color: #c084fc;">🐙</div>
+              <div>
+                <div class="copyright-card-label">GITHUB REPOSITORIES</div>
+                <div class="copyright-card-title">@AngoloInformatico</div>
+              </div>
+            </div>
+            <div class="copyright-card-text">
+              Esplora tutti i repository ufficiali, gli script open-source, i sorgenti completi delle applicazioni e partecipa allo sviluppo segnalando issue o miglioramenti.
+            </div>
+            <div class="copyright-card-footer">
+              <button type="button" class="btn-zima-action btn-zima-reboot btn-open-ext-link" data-url="https://github.com/AngoloInformatico?tab=repositories">
+                <span>Esplora Repository</span>
+              </button>
+            </div>
+          </div>
+
+          <!-- Card 5: Stack Tecnologico -->
+          <div class="copyright-card-item accent-amber">
+            <div class="copyright-card-header">
+              <div class="copyright-card-icon" style="background: rgba(251, 191, 36, 0.15); color: #fbbf24;">⚡</div>
+              <div>
+                <div class="copyright-card-label">ARCHITETTURA &amp; MODULI</div>
+                <div class="copyright-card-title">Stack Tecnologico</div>
+              </div>
+            </div>
+            <div class="copyright-card-text">
+              Realizzato in <strong>Python 3.11+</strong>, backend reattivo asincrono con <strong>FastAPI</strong> &amp; <strong>Uvicorn</strong>, interfaccia desktop con <strong>PyWebView</strong> (Edge WebView2), grafici con <strong>Chart.js</strong> e connettori con <strong>python-kasa</strong>, <strong>tapo SDK</strong> e <strong>PyP100</strong>.
+            </div>
+          </div>
+
+          <!-- Card 6: Funzionalità e Integrazione -->
+          <div class="copyright-card-item accent-cyan">
+            <div class="copyright-card-header">
+              <div class="copyright-card-icon" style="background: rgba(56, 189, 248, 0.15); color: #38bdf8;">🛡️</div>
+              <div>
+                <div class="copyright-card-label">CARATTERISTICHE CHIAVE</div>
+                <div class="copyright-card-title">Controllo &amp; Monitoraggio</div>
+              </div>
+            </div>
+            <div class="copyright-card-text">
+              Include monitoraggio consumi (W, V, mA, kWh), gestione 3 temi dinamici, desktop widget compatto, profilo persistente su file e System Tray per Windows 11.
+            </div>
+          </div>
+        </div>
+      </div>
   </div>
 
 

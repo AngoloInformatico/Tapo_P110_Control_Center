@@ -23,6 +23,9 @@ data/*.db*
 data/*.log
 data/settings.json
 *.log
+.env*
+*.bak
+*.backup
 
 # IDE & OS
 .vscode/

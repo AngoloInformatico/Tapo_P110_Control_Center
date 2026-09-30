@@ -137,20 +137,21 @@
 .cyber-main-body {
   display: flex;
   flex-direction: column;
-  gap: 10px;
-  flex: 1;
+  gap: 8px;
+  flex: 1 1 0;
   min-height: 0;
+  overflow: hidden;
 }
 
 /* Top Hero: 2 Cards Left, Center Knob, 2 Cards Right */
 .cyber-hero-row {
   display: grid;
   grid-template-columns: 1fr 200px 1fr;
-  gap: 14px;
+  gap: 12px;
   align-items: center;
-  height: 155px;
+  height: 148px;
   flex-shrink: 0;
-  margin-bottom: 6px;
+  margin-bottom: 2px;
 }
 
 .cyber-metric-stack {
@@ -338,13 +339,14 @@
   border: 1px solid rgba(255, 255, 255, 0.1);
   border-radius: 14px;
   backdrop-filter: blur(16px);
-  padding: 10px 16px 8px;
+  padding: 8px 16px 6px;
   display: flex;
   flex-direction: column;
   box-shadow: 0 8px 24px rgba(0, 0, 0, 0.45);
-  flex: 1.1;
-  min-height: 140px;
+  flex: 1 1 0;
+  min-height: 120px;
   position: relative;
+  overflow: hidden;
 }
 
 .cyber-waveform-meta {
@@ -353,6 +355,7 @@
   align-items: center;
   font-size: 0.72rem;
   color: #94a3b8;
+  flex-shrink: 0;
 }
 
 .cyber-sub-status {
@@ -377,14 +380,18 @@
 }
 
 .cyber-chart-wrapper {
-  flex: 1;
+  flex: 1 1 0;
   width: 100%;
   position: relative;
-  min-height: 90px;
-  margin-top: 4px;
+  min-height: 0;
+  overflow: hidden;
+  margin-top: 2px;
 }
 
 .cyber-chart-wrapper canvas {
+  position: absolute !important;
+  top: 0;
+  left: 0;
   width: 100% !important;
   height: 100% !important;
 }

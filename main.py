@@ -192,6 +192,19 @@ async def set_power(req: PowerRequest):
         "state": tapo_service.get_state_payload()
     }
 
+class ExternalUrlRequest(BaseModel):
+    url: str
+
+@app.post("/api/open-external-url")
+async def open_external_url(req: ExternalUrlRequest):
+    try:
+        webbrowser.open(req.url)
+        return {"success": True, "url": req.url}
+    except Exception as e:
+        logger.warning(f"Errore apertura link esterno {req.url}: {e}")
+        return {"success": False, "error": str(e)}
+
+
 @app.get("/api/history/recent")
 async def get_recent_history():
     samples = get_recent_samples(limit=60)
